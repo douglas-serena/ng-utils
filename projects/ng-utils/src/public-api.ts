@@ -9,6 +9,7 @@ export * from './lib/pipes/if-else.pipe';
 export * from './lib/pipes/parser-date.pipe';
 export * from './lib/pipes/relative-time.pipe';
 export * from './lib/pipes/time-to-date.pipe';
+export * from './lib/pipes/masked.pipe';
 // PIPES MODULE
 export * from './lib/pipes/pipes.module';
 
@@ -16,6 +17,7 @@ export * from './lib/pipes/pipes.module';
 export * from './lib/directives/columns/columns.directive';
 export * from './lib/directives/file-control/file-control.directive';
 export * from './lib/directives/focus-trap/focus-trap.directive';
+export * from './lib/directives/focus-trap/focus-back.directive';
 export * from './lib/directives/drag-scroll/drag-scroll.directive';
 export * from './lib/directives/masked/masked.directive';
 // DIRECTIVE MODULE

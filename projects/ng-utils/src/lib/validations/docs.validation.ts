@@ -1,6 +1,7 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { isCnpj, isCpf, isCpfOrCnpj } from '@douglas-serena/utils';
 
+// @dynamic
 export class DocsValidation {
   /**
    * @description EN: Validates "CPF" it uses a calculation to validate that the check digits are correct

@@ -10,6 +10,8 @@ import {
   isEqualDate,
   MaxMin,
 } from '@douglas-serena/utils';
+
+// @dynamic
 export class DateValidation {
   /***
    * @description EN: Validate if it is a valid date.

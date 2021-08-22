@@ -1,6 +1,7 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
 import { isString } from '@douglas-serena/utils';
 
+// @dynamic
 export class StringValidation {
   /***
    * @description EN: Validates if it is a string

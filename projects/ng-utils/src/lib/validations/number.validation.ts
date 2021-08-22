@@ -9,6 +9,7 @@ import {
   NumberRange,
 } from '@douglas-serena/utils';
 
+// @dynamic
 export class NumberValidation {
   /**
    * @description EN: validate if it is a number

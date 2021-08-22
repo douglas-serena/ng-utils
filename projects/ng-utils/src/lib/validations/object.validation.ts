@@ -1,6 +1,7 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
 import { isInstanceof, isObject } from '@douglas-serena/utils';
 
+// @dynamic
 export class ObjectValidation {
   /**
    * @description EN: Validates if it is a object

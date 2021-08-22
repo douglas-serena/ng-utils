@@ -24,6 +24,7 @@ import { ObjectValidation } from './object.validation';
 import { PatternValidation } from './pattern.validation';
 import { StringValidation } from './string.validation';
 
+// @dynamic
 export class CommonValidation {
   public static date = DateValidation;
   public static number = NumberValidation;

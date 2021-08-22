@@ -16,6 +16,7 @@ import {
   RESOLUTION_WIDTH,
 } from '@douglas-serena/utils';
 
+// @dynamic
 export class FileValidation {
   /***
    * @description EN: Validates if any file was passed

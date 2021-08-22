@@ -1,6 +1,7 @@
 import { APP_INITIALIZER, ModuleWithProviders, NgModule } from '@angular/core';
 import { RouteChangeService } from './route-change.service';
 
+// @dynamic
 @NgModule({
   imports: [],
   providers: [RouteChangeService],

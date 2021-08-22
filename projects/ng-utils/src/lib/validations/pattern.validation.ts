@@ -6,6 +6,7 @@ import {
   testPattern,
 } from '@douglas-serena/utils';
 
+// @dynamic
 export class PatternValidation {
   /***
    * @description EN: Validates if it is an email using regex
