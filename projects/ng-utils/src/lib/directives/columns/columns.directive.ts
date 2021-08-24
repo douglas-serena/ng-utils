@@ -1,5 +1,6 @@
 import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
-import { IColumnsConfig } from '../../interfaces/columns.interface';
+import { ConfigService } from '../../config/config.service';
+import { IColumnsConfig } from './interfaces/columns.interface';
 
 @Directive({
   selector: '[columns]',
@@ -12,7 +13,7 @@ export class ColumnsDirective implements OnInit {
     default: 12,
   };
 
-  @Input() columnType: 'bootstrap' | 'materialize' = 'bootstrap';
+  @Input() columnType!: 'bootstrap' | 'materialize';
   @Input() set columns(columns: IColumnsConfig | string) {
     if (!(typeof columns === 'string')) {
       Object.assign(this._columns, columns);
@@ -23,12 +24,14 @@ export class ColumnsDirective implements OnInit {
   }
 
   constructor(
-    private elementRef: ElementRef<HTMLInputElement>,
-    private renderer2: Renderer2
+    private renderer2: Renderer2,
+    private configService: ConfigService,
+    private elementRef: ElementRef<HTMLInputElement>
   ) {}
 
   ngOnInit() {
     this._element = this.elementRef.nativeElement;
+    this.columnType = this.columnType || this.configService.config.columnType;
 
     this.updateColumns();
   }

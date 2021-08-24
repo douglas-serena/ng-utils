@@ -1,0 +1,25 @@
+:root {
+  --color-whats: #25d366;
+  --color-telegram: #0088cc;
+  --color-instagram: radial-gradient(
+    circle at 33% 100%,
+    #fed373 4%,
+    #f15245 30%,
+    #d92e7f 62%,
+    #9b36b7 85%,
+    #515ecf
+  );
+  --color-facebook: #4267b2;
+}
+
+.color-danger {
+  color: var(--color-danger);
+}
+.color-warning {
+  color: var(--color-warning);
+}
+
+// WHATS: #25d366
+// TELEGRAM: #0088cc
+// INSTAGRAM: radial-gradient(circle at 33% 100%, #fed373 4%,#f15245 30%,#d92e7f 62%,#9b36b7 85%, #515ecf)
+// FACEBOOK: #4267b2

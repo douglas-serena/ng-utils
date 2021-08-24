@@ -1,0 +1,238 @@
+@import "./mixin";
+
+// TABS
+@media (max-width: 768px) and (min-width: 1px) {
+  mat-tab-group {
+    .mat-tab-header-pagination {
+      min-width: 25px;
+    }
+    .mat-tab-header {
+      left: 0;
+      top: 64px;
+      z-index: 20;
+      width: 100%;
+      position: fixed;
+      background-color: var(--color-background-dark);
+      @media (max-width: 599px) {
+        top: 56px;
+      }
+      .mat-tab-label-container {
+        left: 0px;
+        width: 100%;
+        .mat-tab-list {
+          transform: none !important;
+          overflow-x: auto !important;
+          .mat-tab-labels {
+            justify-content: unset !important;
+            .mat-tab-label {
+              flex-grow: 1;
+              flex-basis: 0;
+              font-weight: 600;
+              margin: 0px !important;
+              padding: 1.25% !important;
+              text-transform: uppercase;
+              min-width: 125px !important;
+            }
+          }
+        }
+      }
+    }
+    mat-tab-body {
+      padding-top: 48px;
+    }
+  }
+}
+@mixin createColorTabs($mat-name, $color) {
+  mat-tab-group.mat-#{$mat-name} {
+    mat-tab-header {
+      .mat-tab-label-container {
+        .mat-tab-list {
+          .mat-tab-labels {
+            .mat-tab-label {
+              text-transform: uppercase;
+              &.mat-tab-label-active {
+                opacity: 1;
+                color: $color;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                mat-icon {
+                  color: $color;
+                }
+              }
+            }
+          }
+          mat-ink-bar {
+            background-color: $color !important;
+          }
+        }
+      }
+    }
+  }
+}
+
+// CALENDAR
+@mixin createColorCalendar($mat-name, $color, $color-dark, $color-opacity) {
+  mat-datepicker-content.mat-#{$mat-name} mat-calendar,
+  mat-calendar[color="#{$mat-name}"] {
+    div.mat-calendar-body-selected {
+      background-color: $color !important;
+    }
+    td.mat-calendar-body-cell:hover:not(.mat-calendar-body-disabled)
+      .mat-calendar-body-cell-content:not(.mat-calendar-body-selected),
+    td.mat-calendar-body-active
+      .mat-calendar-body-cell-content:not(.mat-calendar-body-selected) {
+      background-color: $color-opacity !important;
+    }
+    .theme-light
+      .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical),
+    .theme-dark
+      .mat-calendar-body-today:not(.mat-calendar-body-selected):not(.mat-calendar-body-comparison-identical) {
+      border-color: $color-dark !important;
+    }
+  }
+}
+
+// SPINNER
+@mixin createColorSpinner($mat-name, $color) {
+  mat-spinner.mat-#{$mat-name} {
+    svg {
+      circle {
+        stroke: $color !important;
+      }
+    }
+  }
+}
+
+// ICON
+mat-icon {
+  @if var(--color-text) {
+    color: var(--color-text);
+  } @else {
+    color: #333;
+  }
+}
+@mixin createColorIcon($mat-name, $color) {
+  mat-icon.mat-#{$mat-name} {
+    color: $color !important;
+  }
+}
+
+// CHIP
+@mixin createColorChip($mat-name, $color, $color-text) {
+  mat-chip.mat-#{$mat-name} {
+    &.mat-chip-selected {
+      background-color: $color !important;
+      color: $color-text;
+    }
+  }
+}
+
+// BUTTON
+button {
+  .mat-button-wrapper {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &.mat-mini-fab,
+  &.mat-fab {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  &:hover .mat-button-focus-overlay {
+    opacity: 0.1;
+  }
+}
+
+// BUTTON MIXIN
+@mixin createColorButton($mat-name, $color, $color-text) {
+  button.mat-#{$mat-name}:not(:disabled):not(.mat-button-disabled) {
+    &.mat-stroked-button,
+    &.mat-button {
+      color: $color !important;
+    }
+    &.mat-icon-button {
+      color: $color !important;
+      &:hover .mat-button-focus-overlay {
+        opacity: 0.1;
+      }
+    }
+    &.mat-raised-button,
+    &.mat-mini-fab,
+    &.mat-fab {
+      background-color: $color !important;
+      color: $color-text !important;
+    }
+    .mat-button-focus-overlay {
+      background-color: $color !important;
+    }
+
+    .mat-ripple-element {
+      opacity: 0.1;
+      background-color: $color !important;
+    }
+  }
+}
+
+// SNACKBAR
+@mixin createColorSnackbar($mat-name, $color, $color-text: #fff) {
+  snack-bar-container.mat-#{$mat-name},
+  snack-bar-container.#{$mat-name} {
+    color: $color-text !important;
+    background-color: $color !important;
+    .mat-button-wrapper {
+      color: $color-text !important;
+    }
+  }
+}
+
+// DIALOG
+@mixin createDialog($mat-name, $color, $color-text) {
+  .dialog-header {
+    align-items: center;
+    display: flex !important;
+    justify-content: space-between;
+    & > .left {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    & > .left > .icon-back {
+      margin-right: 5px;
+    }
+  }
+
+  .mat-dialog-content {
+    max-height: 75vh !important;
+  }
+
+  .dialog-mobile {
+    @media (max-width: 992px) {
+      .dialog-header {
+        position: fixed;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 56px;
+        padding: 0 16px;
+
+        & > .left > .title {
+          font-size: 16px;
+        }
+        & + mat-dialog-content {
+          margin-top: calc(64px - 20px);
+        }
+      }
+      .mat-dialog-container {
+        max-height: 100%;
+        overflow: hidden;
+      }
+      .mat-dialog-content {
+        max-height: 100% !important;
+        padding-bottom: 30px;
+      }
+    }
+  }
+}

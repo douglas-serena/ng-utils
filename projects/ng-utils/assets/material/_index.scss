@@ -1,0 +1,10 @@
+@import "./material-mixin";
+@import "./mixin";
+@import "./theme";
+
+button.mat-loading {
+  padding: 5px !important;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}

@@ -1,0 +1,35 @@
+@mixin createScroll(
+  $element,
+  $color,
+  $color-light: null,
+  $color-dark: null,
+  $color-background: null,
+  $radio: 0
+) {
+  #{$element} {
+    &::-webkit-scrollbar {
+      width: 10px;
+      height: 10px;
+    }
+    @if $color-background {
+      &::-webkit-scrollbar-track {
+        border-radius: $radio;
+        box-shadow: inset 0px 0px 10px $color-background;
+      }
+    }
+    &::-webkit-scrollbar-thumb {
+      border-radius: $radio;
+      @if $color-dark and $color-light {
+        background-color: $color-light;
+        &:hover {
+          background-color: $color;
+        }
+        &:active {
+          background-color: $color-dark;
+        }
+      } @else {
+        background-color: $color;
+      }
+    }
+  }
+}

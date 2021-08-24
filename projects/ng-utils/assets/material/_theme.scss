@@ -1,0 +1,40 @@
+@use "@angular/material" as mat;
+@use 'sass:map';
+
+@import "./colors/color-primary";
+@import "./colors/color-accent";
+
+@include mat.core();
+
+$light-color-primary: mat.define-palette($color-primary);
+$light-color-accent: mat.define-palette($color-accent);
+$light-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $light-color-primary,
+      accent: $light-color-accent,
+    ),
+  )
+);
+
+$dark-color-primary: mat.define-palette($color-primary);
+$dark-color-accent: mat.define-palette($color-accent);
+$dark-theme: mat.define-dark-theme(
+  (
+    color: (
+      primary: $dark-color-primary,
+      accent: $dark-color-accent,
+    ),
+  )
+);
+
+.theme-light {
+  @include mat.all-component-themes($light-theme);
+}
+.theme-dark {
+  @include mat.all-component-colors($dark-theme);
+}
+
+input:-webkit-autofill {
+  -webkit-text-fill-color: #333 !important;
+}
