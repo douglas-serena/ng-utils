@@ -5,5 +5,10 @@
   "lib": {
     "entryFile": "src/public-api.ts"
   },
-  "allowedNonPeerDependencies": ["@douglas-serena/utils", "dayjs", "jwt-decode"]
+  "allowedNonPeerDependencies": [
+    "@douglas-serena/utils",
+    "@ngx-translate/core",
+    "jwt-decode",
+    "dayjs"
+  ]
 }

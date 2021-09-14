@@ -5,15 +5,12 @@ import {
   ValidationErrors,
 } from '@angular/forms';
 import {
-  BitSizesKeys,
   getSizeImage,
   isAllowExtensions,
-  isLessOrEqual,
-  isMoreOrEqual,
   maxSize,
   minSize,
-  notIsInstanceof,
   RESOLUTION_WIDTH,
+  TBitSizesKeys,
 } from '@douglas-serena/utils';
 
 // @dynamic
@@ -51,7 +48,7 @@ export class FileValidation {
    * @returns {IReturnMinSize}
    * @returns Valid: `null`
    */
-  public static minSize(min: number, type: BitSizesKeys = 'KB'): ValidatorFn {
+  public static minSize(min: number, type: TBitSizesKeys = 'KB'): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const files = minSize(control.value, min, type);
       return files.valid ? files : null;
@@ -65,7 +62,7 @@ export class FileValidation {
    * @returns Invalid: `{ isNotFile: true }`
    * @returns Valid: `null`
    */
-  public static maxSize(max: number, type: BitSizesKeys = 'KB'): ValidatorFn {
+  public static maxSize(max: number, type: TBitSizesKeys = 'KB'): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
       const files = maxSize(control.value, max, type);
       return files.valid ? files : null;
@@ -80,10 +77,10 @@ export class FileValidation {
    */
   public static maxFiles(max: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      if (notIsInstanceof(control.value, FileList)) {
+      if (!(control.value instanceof FileList)) {
         return null;
       }
-      const files: File[] = control.value || [];
+      const files = control.value || [];
       return files.length > max ? { maxFiles: true } : null;
     };
   }
@@ -96,10 +93,10 @@ export class FileValidation {
    */
   public static minFiles(min: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null => {
-      if (notIsInstanceof(control.value, FileList)) {
+      if (!(control.value instanceof FileList)) {
         return null;
       }
-      const files: File[] = control.value || [];
+      const files = control.value || [];
       return files.length < min ? { minFiles: true } : null;
     };
   }
@@ -118,7 +115,7 @@ export class FileValidation {
     return async (control: AbstractControl) => {
       const { width } = await getSizeImage(control.value);
 
-      return isMoreOrEqual(width, min) ? null : { minHeightFile: true };
+      return width >= min ? null : { minHeightFile: true };
     };
   }
 
@@ -136,7 +133,7 @@ export class FileValidation {
     return async (control: AbstractControl) => {
       const { width } = await getSizeImage(control.value);
 
-      return isLessOrEqual(width, max) ? null : { maxWidthFile: true };
+      return width <= max ? null : { maxWidthFile: true };
     };
   }
 
@@ -154,7 +151,7 @@ export class FileValidation {
     return async (control: AbstractControl) => {
       const { height } = await getSizeImage(control.value);
 
-      return isMoreOrEqual(height, min) ? null : { minHeightFile: true };
+      return height >= min ? null : { minHeightFile: true };
     };
   }
 
@@ -172,7 +169,7 @@ export class FileValidation {
     return async (control: AbstractControl) => {
       const { width } = await getSizeImage(control.value);
 
-      return isLessOrEqual(width, max) ? null : { maxHeightFile: true };
+      return width <= max ? null : { maxHeightFile: true };
     };
   }
 }

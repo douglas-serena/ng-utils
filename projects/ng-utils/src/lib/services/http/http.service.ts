@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-import { isTypeof, notIsTypeof } from '@douglas-serena/utils';
 
 import { Observable } from 'rxjs';
 import { ConfigService } from '../../config/config.service';
@@ -29,7 +28,7 @@ export class HttpService {
     options?: IHttpRequest
   ): Observable<T> {
     if (!!idOrOptions) {
-      if (isTypeof(idOrOptions, 'string') || isTypeof(idOrOptions, 'number')) {
+      if (typeof idOrOptions === 'string' || typeof idOrOptions === 'number') {
         path = `${path}/${idOrOptions}`;
       } else {
         options = idOrOptions;
@@ -46,8 +45,8 @@ export class HttpService {
     body?: any,
     options?: IHttpOption
   ): Observable<T> {
-    if (!body.id && this.config?.removeIdPost) {
-      delete body.id;
+    if (!body?.id && this.config?.removeIdPost) {
+      delete body?.id;
     }
 
     return this.httpClient.post<T>(
@@ -65,10 +64,10 @@ export class HttpService {
   ): Observable<T> {
     if (!!idOrOptions) {
       if (
-        notIsTypeof(idOrOptions, 'string') ||
-        notIsTypeof(idOrOptions, 'number')
+        !(typeof idOrOptions === 'string') ||
+        !(typeof idOrOptions === 'number')
       ) {
-        options = idOrOptions;
+        options = idOrOptions as IHttpOption;
       }
     }
 
@@ -94,8 +93,8 @@ export class HttpService {
       }
     }
 
-    if (body.id !== undefined && this.config?.removeIdSave) {
-      delete body.id;
+    if (body?.id !== undefined && this.config?.removeIdSave) {
+      delete body?.id;
     }
 
     return this.httpClient.request<T>(method, `${this.API_URL}${path}`, {

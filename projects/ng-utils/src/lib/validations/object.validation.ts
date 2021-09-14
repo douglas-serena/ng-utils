@@ -1,5 +1,4 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import { isInstanceof, isObject } from '@douglas-serena/utils';
 
 // @dynamic
 export class ObjectValidation {
@@ -10,7 +9,7 @@ export class ObjectValidation {
    * @returns Valid: `null`
    */
   public static isObject(control: AbstractControl): ValidationErrors | null {
-    return !control.value || isObject(control.value)
+    return !control.value || typeof control.value === 'object'
       ? null
       : { isObject: true };
   }
@@ -23,7 +22,7 @@ export class ObjectValidation {
    */
   public static isInstanceof(instance: any): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isInstanceof(control.value, instance)
+      !control.value || control.value instanceof instance
         ? null
         : { isInstanceof: true };
   }

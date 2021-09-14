@@ -1,15 +1,15 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import {
-  DateAny,
-  DateRange,
-  isAfterDate,
-  isBetweenDate,
-  isBirthDateValid,
-  isDateValid,
-  isDifferentDate,
-  isEqualDate,
-  MaxMin,
-} from '@douglas-serena/utils';
+import { TMaxMin, TRange } from '@douglas-serena/utils';
+import dayjs from 'dayjs';
+import isBetween from 'dayjs/plugin/isBetween';
+import isSameOrAfter from 'dayjs/plugin/isSameOrAfter';
+import isSameOrBefore from 'dayjs/plugin/isSameOrBefore';
+
+dayjs.extend(isBetween);
+dayjs.extend(isSameOrAfter);
+dayjs.extend(isSameOrBefore);
+
+export type TDateAny = Date | string | dayjs.Dayjs | number;
 
 // @dynamic
 export class DateValidation {
@@ -20,7 +20,7 @@ export class DateValidation {
    * @returns Valid: `null`
    */
   public static isDate(control: AbstractControl): ValidationErrors | null {
-    return !control.value || isDateValid(control.value)
+    return !control.value || dayjs(control.value).isValid()
       ? null
       : { isDate: true };
   }
@@ -31,9 +31,9 @@ export class DateValidation {
    * @returns Invalid: `{ isAfter: true }`
    * @returns Valid: `null`
    */
-  public static isAfter(date: DateAny): ValidatorFn {
+  public static isAfter(date: TDateAny, unit?: dayjs.OpUnitType): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isAfterDate(date, control.value)
+      !control.value || dayjs(date).isAfter(dayjs(control.value), unit)
         ? null
         : { isAfter: true };
   }
@@ -44,9 +44,9 @@ export class DateValidation {
    * @returns Invalid: `{ isBefore: true }`
    * @returns Valid: `null`
    */
-  public static isBefore(date: DateAny): ValidatorFn {
+  public static isBefore(date: TDateAny, unit?: dayjs.OpUnitType): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isAfterDate(date, control.value)
+      !control.value || dayjs(date).isBefore(dayjs(control.value), unit)
         ? null
         : { isBefore: true };
   }
@@ -57,9 +57,9 @@ export class DateValidation {
    * @returns Invalid: `{ isEqual: true }`
    * @returns Valid: `null`
    */
-  public static isEqual(date: DateAny): ValidatorFn {
+  public static isEqual(date: TDateAny, unit?: dayjs.OpUnitType): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isEqualDate(date, control.value)
+      !control.value || dayjs(date).isSame(dayjs(control.value), unit)
         ? null
         : { isEqual: true };
   }
@@ -70,9 +70,19 @@ export class DateValidation {
    * @returns Invalid: `{ isBetween: true }`
    * @returns Valid: `null`
    */
-  public static isBetween(range: DateRange): ValidatorFn {
+  public static isBetween(
+    range: TRange,
+    unit?: dayjs.OpUnitType,
+    d?: '()' | '[]' | '[)' | '(]'
+  ): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isBetweenDate(control.value, range)
+      !control.value ||
+      dayjs(control.value).isBetween(
+        dayjs(range?.start || new Date()),
+        dayjs(range?.end || new Date()),
+        unit,
+        d
+      )
         ? null
         : { isBetween: true };
   }
@@ -83,9 +93,12 @@ export class DateValidation {
    * @returns Invalid: `{ isBetween: true }`
    * @returns Valid: `null`
    */
-  public static isDifferent(date: DateAny): ValidatorFn {
+  public static isDifferent(
+    date: TDateAny,
+    unit?: dayjs.OpUnitType
+  ): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isDifferentDate(date, control.value)
+      !control.value || !dayjs(date).isSame(dayjs(control.value), unit)
         ? null
         : { isDifferent: true };
   }
@@ -96,10 +109,29 @@ export class DateValidation {
    * @returns Invalid: `{ isBirchDay: true }`
    * @returns Valid: `null`
    */
-  public static isBirchDay(year: MaxMin): ValidatorFn {
-    return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isBirthDateValid(control.value, year)
+  public static isBirchDay(year: TMaxMin): ValidatorFn {
+    return (control: AbstractControl): ValidationErrors | null => {
+      const isBirthDateValid = (birchDay: TDateAny): boolean => {
+        if (!year?.max) {
+          year.min = Number.parseInt(year?.min?.toString() as string);
+          return dayjs(birchDay).isSameOrBefore(
+            dayjs().subtract(year.min, 'years')
+          );
+        }
+        year.max = Number.parseInt(year?.max?.toString() as string);
+        year.min = Number.parseInt(year?.min?.toString() as string);
+
+        return (
+          dayjs(birchDay).isSameOrAfter(dayjs().subtract(year.max, 'years')) &&
+          dayjs(birchDay).isSameOrBefore(
+            dayjs().subtract(year.min || 0, 'years')
+          )
+        );
+      };
+
+      return !control.value || isBirthDateValid(control.value)
         ? null
         : { isBirchDay: true };
+    };
   }
 }

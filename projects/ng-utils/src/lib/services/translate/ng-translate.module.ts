@@ -1,19 +1,14 @@
 import { APP_INITIALIZER, NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import {
-  TranslateModule as NgxTranslateModule,
-  TranslateService,
-} from '@ngx-translate/core';
+import { TranslateModule, TranslateService } from '@ngx-translate/core';
 import { initTranslate } from './init-translate';
 import { HttpClient } from '@angular/common/http';
 import { ConfigService } from '../../config/config.service';
 
 @NgModule({
-  imports: [CommonModule, NgxTranslateModule.forRoot()],
-  exports: [NgxTranslateModule],
+  imports: [CommonModule, TranslateModule.forRoot()],
   providers: [
     HttpClient,
-    TranslateService,
     ConfigService,
     {
       provide: APP_INITIALIZER,
@@ -23,11 +18,4 @@ import { ConfigService } from '../../config/config.service';
     },
   ],
 })
-export class NgTranslateModule {
-  // static forRoot(): ModuleWithProviders<any> {
-  //   return {
-  //     ngModule: ,
-  //     providers: [],
-  //   };
-  // }
-}
+export class NgTranslateModule {}

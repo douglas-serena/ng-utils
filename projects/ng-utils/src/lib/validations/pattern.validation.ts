@@ -1,10 +1,5 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-import {
-  REGEX_EMAIL,
-  REGEX_PHONE_BR,
-  REGEX_URL,
-  testPattern,
-} from '@douglas-serena/utils';
+import { REGEX_EMAIL, REGEX_PHONE_BR, REGEX_URL } from '@douglas-serena/utils';
 
 // @dynamic
 export class PatternValidation {
@@ -18,7 +13,8 @@ export class PatternValidation {
    * ```
    */
   public static isEmail(control: AbstractControl): ValidationErrors | null {
-    return !control.value || testPattern(control.value, REGEX_EMAIL)
+    return !control.value ||
+      !!(control.value as string | null)?.match(REGEX_EMAIL)
       ? null
       : { isEmail: true };
   }
@@ -33,7 +29,8 @@ export class PatternValidation {
    * ```
    */
   public static isPhoneBr(control: AbstractControl): ValidationErrors | null {
-    return !control.value || testPattern(control.value, REGEX_PHONE_BR)
+    return !control.value ||
+      !!(control.value as string | null)?.match(REGEX_PHONE_BR)
       ? null
       : { isPhoneBr: true };
   }
@@ -48,7 +45,8 @@ export class PatternValidation {
    * ```
    */
   public static isUrl(control: AbstractControl): ValidationErrors | null {
-    return !control.value || testPattern(control.value, REGEX_URL)
+    return !control.value ||
+      !!(control.value as string | null)?.match(REGEX_URL)
       ? null
       : { isUrl: true };
   }

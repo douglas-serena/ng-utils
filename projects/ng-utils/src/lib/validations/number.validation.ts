@@ -1,13 +1,5 @@
 import { AbstractControl, ValidationErrors, ValidatorFn } from '@angular/forms';
-import {
-  isBeforeNumber,
-  isLess,
-  isLessOrEqual,
-  isMore,
-  isMoreOrEqual,
-  isNumber,
-  NumberRange,
-} from '@douglas-serena/utils';
+import { isBeforeNumber, isNumber, TRange } from '@douglas-serena/utils';
 
 // @dynamic
 export class NumberValidation {
@@ -31,7 +23,7 @@ export class NumberValidation {
    */
   public static isLess(number: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isLess(control.value, number) ? null : { isLess: true };
+      !control.value || control.value < number ? null : { isLess: true };
   }
 
   /**
@@ -42,7 +34,7 @@ export class NumberValidation {
    */
   public static isLessOrEqual(number: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isLessOrEqual(control.value, number)
+      !control.value || control.value <= number
         ? null
         : { isLessOrEqual: true };
   }
@@ -55,7 +47,7 @@ export class NumberValidation {
    */
   public static isMore(number: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isMore(control.value, number) ? null : { isMore: true };
+      !control.value || control.value > number ? null : { isMore: true };
   }
 
   /**
@@ -66,7 +58,7 @@ export class NumberValidation {
    */
   public static isMoreOrEqual(number: number): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isMoreOrEqual(control.value, number)
+      !control.value || control.value >= number
         ? null
         : { isMoreOrEqual: true };
   }
@@ -77,7 +69,7 @@ export class NumberValidation {
    * @returns Invalid: `{ isBetween: true }`
    * @returns Valid: `null`
    */
-  public static isBetween(range: NumberRange): ValidatorFn {
+  public static isBetween(range: TRange): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
       !control.value || isBeforeNumber(control.value, range)
         ? null

@@ -8,7 +8,6 @@ import {
   RouterEvent,
   RoutesRecognized,
 } from '@angular/router';
-import { isInstanceof } from '@douglas-serena/utils';
 import { Observable } from 'rxjs';
 import { filter } from 'rxjs/operators';
 import { CommonValidation } from '../../validations/common.validation';
@@ -25,21 +24,21 @@ export class RouteChangeService {
 
   public async load() {
     (this.router.events as Observable<RouterEvent>)
-      .pipe(filter((event) => isInstanceof(event, RouterEvent)))
+      .pipe(filter((event) => event instanceof RouterEvent))
       .subscribe((event: object) => {
-        if (isInstanceof(event, NavigationStart)) {
+        if (event instanceof NavigationStart) {
           this.navigationStart.emit(event);
         }
-        if (isInstanceof(event, RoutesRecognized)) {
+        if (event instanceof RoutesRecognized) {
           this.routesRecognized.emit(event);
         }
-        if (isInstanceof(event, GuardsCheckStart)) {
+        if (event instanceof GuardsCheckStart) {
           this.guardsCheckStart.emit(event);
         }
-        if (isInstanceof(event, GuardsCheckEnd)) {
+        if (event instanceof GuardsCheckEnd) {
           this.guardsCheckEnd.emit(event);
         }
-        if (isInstanceof(event, NavigationEnd)) {
+        if (event instanceof NavigationEnd) {
           this.navigationEnd.emit(event);
         }
       });

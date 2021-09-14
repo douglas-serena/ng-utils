@@ -6,14 +6,7 @@ import {
   ValidationErrors,
   ValidatorFn,
 } from '@angular/forms';
-import {
-  contains,
-  isDifferent,
-  isEqual,
-  isPassword,
-  isTypeof,
-  Typeof,
-} from '@douglas-serena/utils';
+import { contains, isPassword, TTypeof } from '@douglas-serena/utils';
 import { from, Observable, of, Subscription } from 'rxjs';
 import { debounceTime, delay, map } from 'rxjs/operators';
 import { DateValidation } from './date.validation';
@@ -55,7 +48,7 @@ export class CommonValidation {
    */
   public static isDifferent(work: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      isDifferent(control.value, work) ? null : { isDifferent: true };
+      control.value !== work ? null : { isDifferent: true };
   }
 
   /***
@@ -66,7 +59,7 @@ export class CommonValidation {
    */
   public static isEqual(work: string): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      isEqual(control.value, work) ? null : { isEqual: true };
+      control.value === work ? null : { isEqual: true };
   }
 
   /**
@@ -75,9 +68,9 @@ export class CommonValidation {
    * @returns Invalid: `{ isTypeof: true }`
    * @returns Valid: `null`
    */
-  public static isTypeof(type: Typeof): ValidatorFn {
+  public static isTypeof(type: TTypeof): ValidatorFn {
     return (control: AbstractControl): ValidationErrors | null =>
-      !control.value || isTypeof(control.value, type)
+      !control.value || typeof control.value === type
         ? null
         : { isTypeof: true };
   }

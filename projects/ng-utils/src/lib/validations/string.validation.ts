@@ -1,5 +1,4 @@
 import { AbstractControl, ValidationErrors } from '@angular/forms';
-import { isString } from '@douglas-serena/utils';
 
 // @dynamic
 export class StringValidation {
@@ -10,7 +9,7 @@ export class StringValidation {
    * @returns Valid: `null`
    */
   public static isString(control: AbstractControl): ValidationErrors | null {
-    return !control.value || isString(control.value)
+    return !control.value || typeof control.value === 'string'
       ? null
       : { isString: true };
   }

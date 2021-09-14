@@ -1,5 +1,20 @@
 @import "./mixin";
 
+// SLIDER
+@mixin createColorSlider($mat-name, $color) {
+  mat-slider.mat-#{$mat-name} {
+    &
+      > .mat-slider-wrapper
+      > .mat-slider-track-wrapper
+      > .mat-slider-track-fill {
+      background-color: $color;
+    }
+    & > .mat-slider-wrapper > .mat-slider-thumb-container > .mat-slider-thumb {
+      background-color: $color;
+    }
+  }
+}
+
 // TABS
 @media (max-width: 768px) and (min-width: 1px) {
   mat-tab-group {

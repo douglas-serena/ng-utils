@@ -4,13 +4,14 @@
 export * from './lib/ng-utils.module';
 
 // PIPES
-export * from './lib/pipes/dom-sanitizer.pipe';
 export * from './lib/pipes/else.pipe';
 export * from './lib/pipes/if-else.pipe';
-export * from './lib/pipes/parser-date.pipe';
 export * from './lib/pipes/relative-time.pipe';
-export * from './lib/pipes/time-to-date.pipe';
 export * from './lib/pipes/masked.pipe';
+export * from './lib/pipes/sanitizer/sanitizer-url.pipe';
+export * from './lib/pipes/sanitizer/sanitizer-script.pipe';
+export * from './lib/pipes/sanitizer/sanitizer-script.pipe';
+export * from './lib/pipes/sanitizer/sanitizer-html.pipe';
 // PIPES MODULE
 export * from './lib/pipes/pipes.module';
 
@@ -25,9 +26,6 @@ export * from './lib/guards/guard.module';
 // DIRECTIVES
 export * from './lib/directives/columns/columns.directive';
 export * from './lib/directives/file-control/file-control.directive';
-export * from './lib/directives/focus-trap/focus-trap.directive';
-export * from './lib/directives/focus-trap/focus-back.directive';
-export * from './lib/directives/drag-scroll/drag-scroll.directive';
 export * from './lib/directives/masked/masked.directive';
 export * from './lib/directives/button-loading/button-loading.directive';
 export * from './lib/directives/expand/expand.directive';
@@ -37,8 +35,6 @@ export * from './lib/directives/contenteditable/contenteditable-value-accessor.d
 // DIRECTIVE MODULE
 export * from './lib/directives/columns/columns.module';
 export * from './lib/directives/file-control/file-control.module';
-export * from './lib/directives/focus-trap/focus-trap.module';
-export * from './lib/directives/drag-scroll/drag-scroll.module';
 export * from './lib/directives/masked/masked.module';
 export * from './lib/directives/button-loading/button-loading.module';
 export * from './lib/directives/expand/expand.module';
@@ -49,11 +45,13 @@ export * from './lib/directives/contenteditable/contenteditable.module';
 // SERVICES
 export * from './lib/services/route-change/route-change.service';
 export * from './lib/services/screen-points/screen-points.service';
+export * from './lib/services/translate/my-translate.service';
 export * from './lib/services/http/auth-jwt.interceptor';
 export * from './lib/services/http/auth-jwt.service';
 export * from './lib/services/http/http.service';
 // SERVICES MODULE
 export * from './lib/services/http/http.module';
+export * from './lib/services/translate/ng-translate.module';
 export * from './lib/services/route-change/route-change.module';
 export * from './lib/services/screen-points/screen-points.module';
 

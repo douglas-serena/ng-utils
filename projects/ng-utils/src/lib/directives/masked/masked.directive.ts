@@ -2,12 +2,7 @@ import { ChangeDetectorRef, ElementRef, HostListener } from '@angular/core';
 import { Input } from '@angular/core';
 import { Directive } from '@angular/core';
 import { NG_VALUE_ACCESSOR, ControlValueAccessor } from '@angular/forms';
-import {
-  ConfigMask,
-  IServiceMask,
-  isInstanceof,
-  masked,
-} from '@douglas-serena/utils';
+import { IServiceMask, masked, TConfigMask } from '@douglas-serena/utils';
 
 @Directive({
   selector: '[masked]',
@@ -24,12 +19,13 @@ export class MaskedDirective implements ControlValueAccessor {
 
   @Input() public set masked(mask: any) {
     if (mask) {
-      let value = isInstanceof(this.element, HTMLInputElement)
-        ? (this.element.value as string)
-        : (this.element.textContent as string);
+      let value =
+        this.element instanceof HTMLInputElement
+          ? (this.element.value as string)
+          : (this.element.textContent as string);
 
       this.mask = mask;
-      this.maskRef = masked(mask, this.maskConfig as ConfigMask)
+      this.maskRef = masked(mask, this.maskConfig as TConfigMask)
         .bind(this.element)
         .update(value, { dispatchEvent: false });
     }
@@ -38,8 +34,8 @@ export class MaskedDirective implements ControlValueAccessor {
   public maskRef?: IServiceMask;
   @Input() public unmask?: boolean = true;
   @Input() public onFocusSelectAll = false;
-  @Input() public maskConfig?: Partial<ConfigMask>;
-  @Input() public mask?: string | Partial<ConfigMask>;
+  @Input() public maskConfig?: Partial<TConfigMask>;
+  @Input() public mask?: string | Partial<TConfigMask>;
 
   constructor(
     elementRef: ElementRef,
@@ -49,9 +45,10 @@ export class MaskedDirective implements ControlValueAccessor {
   }
 
   @HostListener('input') public onInput() {
-    let value = isInstanceof(this.element, HTMLInputElement)
-      ? (this.element.value as string)
-      : (this.element.textContent as string);
+    let value =
+      this.element instanceof HTMLInputElement
+        ? (this.element.value as string)
+        : (this.element.textContent as string);
 
     value = value.toString();
     if (this.mask) {
@@ -79,7 +76,7 @@ export class MaskedDirective implements ControlValueAccessor {
   public writeValue(value: any, update = true): void {
     value = value.toString();
     if (this.mask && this.unmask) {
-      const myMask = masked(this.mask, this.maskConfig as ConfigMask);
+      const myMask = masked(this.mask, this.maskConfig as TConfigMask);
       value = myMask.unmask(value);
 
       this.onChange(value);

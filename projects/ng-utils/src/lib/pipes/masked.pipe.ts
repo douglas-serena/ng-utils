@@ -1,5 +1,5 @@
 import { Pipe, PipeTransform } from '@angular/core';
-import { ConfigMask, masked } from '@douglas-serena/utils';
+import { TConfigMask, masked } from '@douglas-serena/utils';
 
 @Pipe({
   name: 'masked',
@@ -7,8 +7,8 @@ import { ConfigMask, masked } from '@douglas-serena/utils';
 export class MaskedPipe implements PipeTransform {
   transform(
     value: any,
-    mask: string | Partial<ConfigMask>,
-    configMask?: Partial<ConfigMask>
+    mask: string | Partial<TConfigMask>,
+    configMask?: Partial<TConfigMask>
   ): any {
     return masked(mask, configMask).mask(value);
   }
