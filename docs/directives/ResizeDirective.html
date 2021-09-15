@@ -38,7 +38,7 @@
 
 <ol class="breadcrumb">
   <li>Directives</li>
-  <li >ColumnsDirective</li>
+  <li >ResizeDirective</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -56,7 +56,7 @@
             <h3>File</h3>
         </p>
         <p class="comment">
-            <code>projects/ng-utils/src/lib/directives/columns/columns.directive.ts</code>
+            <code>projects/ng-utils/src/lib/directives/resize/resize.directive.ts</code>
         </p>
 
 
@@ -66,6 +66,7 @@
             </p>
             <p class="comment">
                             <code><a href="https://angular.io/api/core/OnInit" target="_blank" >OnInit</a></code>
+                            <code><a href="https://angular.io/api/core/OnDestroy" target="_blank" >OnDestroy</a></code>
             </p>
 
 
@@ -76,7 +77,7 @@
 
                     <tr>
                         <td class="col-md-3">Selector</td>
-                        <td class="col-md-9"><code>[columns]</code></td>
+                        <td class="col-md-9"><code>[resize]</code></td>
                     </tr>
 
                 </tbody>
@@ -96,10 +97,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#_columns" >_columns</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#_resize" >_resize</a>
                             </li>
                             <li>
-                                <a href="#_element" >_element</a>
+                                    <span class="modifier">Private</span>
+                                <a href="#element" >element</a>
                             </li>
                         </ul>
                     </td>
@@ -114,10 +117,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#ngOnInit" >ngOnInit</a>
+                                <a href="#ngOnDestroy" >ngOnDestroy</a>
                             </li>
                             <li>
-                                <a href="#updateColumns" >updateColumns</a>
+                                <a href="#ngOnInit" >ngOnInit</a>
                             </li>
                         </ul>
                     </td>
@@ -132,10 +135,10 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#columns" >columns</a>
+                                <a href="#resize" >resize</a>
                             </li>
                             <li>
-                                <a href="#columnType" >columnType</a>
+                                <a href="#resizeConfig" >resizeConfig</a>
                             </li>
                         </ul>
                     </td>
@@ -144,20 +147,6 @@
 
 
 
-                    <tr>
-                        <td class="col-md-4">
-                            <h6><b>Accessors</b></h6>
-                        </td>
-                    </tr>
-                    <tr>
-                        <td class="col-md-4">
-                            <ul class="index-list">
-                                <li>
-                                    <a href="#columns" >columns</a>
-                                </li>
-                            </ul>
-                        </td>
-                    </tr>
         </tbody>
     </table>
 </section>
@@ -168,12 +157,12 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(elementRef: ElementRef<HTMLInputElement>)</code>
+<code>constructor(elementRef: <a href="https://angular.io/api/core/ElementRef" target="_blank">ElementRef</a>)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="24" class="link-to-prism">projects/ng-utils/src/lib/directives/columns/columns.directive.ts:24</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ng-utils/src/lib/directives/resize/resize.directive.ts:10</a></div>
                             </td>
                         </tr>
 
@@ -194,7 +183,7 @@
                                                         <td>elementRef</td>
                                                   
                                                         <td>
-                                                                    <code>ElementRef&lt;HTMLInputElement&gt;</code>
+                                                                        <code><a href="https://angular.io/api/core/ElementRef" target="_blank" >ElementRef</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -217,13 +206,18 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="columns"></a>
-                        <b>columns</b>
+                        <a name="resize"></a>
+                        <b>resize</b>
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>[]</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/ng-utils/src/lib/directives/columns/columns.directive.ts:17</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="6" class="link-to-prism">projects/ng-utils/src/lib/directives/resize/resize.directive.ts:6</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -232,19 +226,24 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-                        <a name="columnType"></a>
-                        <b>columnType</b>
+                        <a name="resizeConfig"></a>
+                        <b>resizeConfig</b>
                     </td>
                 </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>    <code>&quot;bootstrap&quot; | &quot;materialize&quot;</code>
+                        <i>Type : </i>    <code>Partial&lt;Omit&lt;IConfigResize, resize&gt;&gt;</code>
 
+                    </td>
+                </tr>
+                <tr>
+                    <td class="col-md-4">
+                        <i>Default value : </i><code>{}</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-2" colspan="2">
-                                    <div class="io-line">Defined in <a href="" data-line="16" class="link-to-prism">projects/ng-utils/src/lib/directives/columns/columns.directive.ts:16</a></div>
+                                    <div class="io-line">Defined in <a href="" data-line="7" class="link-to-prism">projects/ng-utils/src/lib/directives/resize/resize.directive.ts:7</a></div>
                             </td>
                         </tr>
             </tbody>
@@ -258,6 +257,43 @@
     <h3 id="methods">
         Methods
     </h3>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="ngOnDestroy"></a>
+                    <span class="name">
+                        <span ><b>ngOnDestroy</b></span>
+                        <a href="#ngOnDestroy"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+<code>ngOnDestroy()</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="23"
+                            class="link-to-prism">projects/ng-utils/src/lib/directives/resize/resize.directive.ts:23</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
+
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
     <table class="table table-sm table-bordered">
         <tbody>
             <tr>
@@ -278,45 +314,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="28"
-                            class="link-to-prism">projects/ng-utils/src/lib/directives/columns/columns.directive.ts:28</a></div>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-
-                    <div class="io-description">
-                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                    </div>
-                </td>
-            </tr>
-        </tbody>
-    </table>
-    <table class="table table-sm table-bordered">
-        <tbody>
-            <tr>
-                <td class="col-md-4">
-                    <a name="updateColumns"></a>
-                    <span class="name">
-                        <span ><b>updateColumns</b></span>
-                        <a href="#updateColumns"><span class="icon ion-ios-link"></span></a>
-                    </span>
-                </td>
-            </tr>
-            <tr>
-                <td class="col-md-4">
-<code>updateColumns()</code>
-                </td>
-            </tr>
-
-
-            <tr>
-                <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="35"
-                            class="link-to-prism">projects/ng-utils/src/lib/directives/columns/columns.directive.ts:35</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="16"
+                            class="link-to-prism">projects/ng-utils/src/lib/directives/resize/resize.directive.ts:16</a></div>
                 </td>
             </tr>
 
@@ -342,31 +341,23 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="_columns"></a>
+                    <a name="_resize"></a>
                     <span class="name">
-                        <span ><b>_columns</b></span>
-                        <a href="#_columns"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Private</span>
+                        <span ><b>_resize</b></span>
+                        <a href="#_resize"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
                 <tr>
                     <td class="col-md-4">
-                        <i>Type : </i>        <code><a href="../interfaces/IColumnsConfig.html" target="_self" >IColumnsConfig</a></code>
+                        <i>Type : </i>    <code>Resize</code>
 
-                    </td>
-                </tr>
-                <tr>
-                    <td class="col-md-4">
-                        <i>Default value : </i><code>{
-    addColumnHost: false,
-    addRowHost: true,
-    default: 12,
-  }</code>
                     </td>
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ng-utils/src/lib/directives/columns/columns.directive.ts:10</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="8" class="link-to-prism">projects/ng-utils/src/lib/directives/resize/resize.directive.ts:8</a></div>
                         </td>
                     </tr>
 
@@ -377,10 +368,11 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="_element"></a>
+                    <a name="element"></a>
                     <span class="name">
-                        <span ><b>_element</b></span>
-                        <a href="#_element"><span class="icon ion-ios-link"></span></a>
+                            <span class="modifier">Private</span>
+                        <span ><b>element</b></span>
+                        <a href="#element"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
@@ -392,7 +384,7 @@
                 </tr>
                     <tr>
                         <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="9" class="link-to-prism">projects/ng-utils/src/lib/directives/columns/columns.directive.ts:9</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="10" class="link-to-prism">projects/ng-utils/src/lib/directives/resize/resize.directive.ts:10</a></div>
                         </td>
                     </tr>
 
@@ -401,183 +393,35 @@
     </table>
 </section>
 
-            <section>
-    <h3 id="accessors">
-        Accessors
-    </h3>
-        <table class="table table-sm table-bordered">
-            <tbody>
-                <tr>
-                    <td class="col-md-4">
-                        <a name="columns"></a>
-                        <span class="name"><b>columns</b><a href="#columns"><span class="icon ion-ios-link"></span></a></span>
-                    </td>
-                </tr>
-
-
-                <tr>
-                    <td class="col-md-4">
-                        <span class="accessor"><b>set</b><code>columns(columns: <a href="../interfaces/IColumnsConfig.html" target="_self">IColumnsConfig | string</a>)</code></span>
-                    </td>
-                </tr>
-                            <tr>
-                                <td class="col-md-4">
-                                    <div class="io-line">Defined in <a href="" data-line="17" class="link-to-prism">projects/ng-utils/src/lib/directives/columns/columns.directive.ts:17</a></div>
-                                </td>
-                            </tr>
-                    <tr>
-                        <td class="col-md-4">
-
-                                <div class="io-description">
-                                        <b>Parameters :</b>
-                                        <table class="params">
-                                            <thead>
-                                                <tr>
-                                                    <td>Name</td>
-                                                        <td>Type</td>
-                                                    <td>Optional</td>
-                                                </tr>
-                                            </thead>
-                                            <tbody>
-                                                    <tr>
-                                                            <td>columns</td>
-                                                    
-                                                            <td>
-                                                                            <code><a href="../interfaces/IColumnsConfig.html" target="_self" >IColumnsConfig | string</a></code>
-                                                            </td>
-                                                    
-                                                        <td>
-                                                                No
-                                                        </td>
-                                                        
-                                                    </tr>
-                                            </tbody>
-                                        </table>
-                                </div>
-                                <div>
-                                </div>
-                                <div class="io-description">
-                                    <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >void</a></code>
-
-                                </div>
-                        </td>
-                    </tr>
-            </tbody>
-        </table>
-</section>
 
     </div>
 
 
     <div class="tab-pane fade  tab-source-code" id="c-source">
-        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, ElementRef, Input, OnInit } from &#x27;@angular/core&#x27;;
-import { ngUtilsConfig } from &#x27;../../config/config.default&#x27;;
-import { IColumnsConfig } from &#x27;./interfaces/columns.interface&#x27;;
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Directive, ElementRef, Input, OnDestroy, OnInit } from &#x27;@angular/core&#x27;;
+import { IConfigResize, Resize, resize } from &#x27;@douglas-serena/utils&#x27;;
 
-@Directive({
-  selector: &#x27;[columns]&#x27;,
-})
-export class ColumnsDirective implements OnInit {
-  _element!: HTMLElement;
-  _columns: IColumnsConfig &#x3D; {
-    addColumnHost: false,
-    addRowHost: true,
-    default: 12,
-  };
+@Directive({ selector: &#x27;[resize]&#x27; })
+export class ResizeDirective implements OnInit, OnDestroy {
+  @Input() public resize: IConfigResize[&#x27;resize&#x27;] &#x3D; [];
+  @Input() public resizeConfig: Partial&lt;Omit&lt;IConfigResize, &#x27;resize&#x27;&gt;&gt; &#x3D; {};
+  private _resize!: Resize;
 
-  @Input() columnType!: &#x27;bootstrap&#x27; | &#x27;materialize&#x27;;
-  @Input() set columns(columns: IColumnsConfig | string) {
-    if (!(typeof columns &#x3D;&#x3D;&#x3D; &#x27;string&#x27;)) {
-      Object.assign(this._columns, columns);
-      if (this._element) {
-        this.updateColumns();
-      }
-    }
+  private element: HTMLElement;
+
+  constructor(elementRef: ElementRef) {
+    this.element &#x3D; elementRef.nativeElement;
   }
-
-  constructor(private elementRef: ElementRef&lt;HTMLInputElement&gt;) {}
 
   ngOnInit() {
-    this._element &#x3D; this.elementRef.nativeElement;
-    this.columnType &#x3D; this.columnType || ngUtilsConfig.columnType;
-
-    this.updateColumns();
+    this._resize &#x3D; resize(this.element, {
+      ...this.resizeConfig,
+      resize: this.resize,
+    });
   }
 
-  updateColumns() {
-    let elementRoot &#x3D; this._element;
-    let elementAddColumns &#x3D; elementRoot;
-    let elementHost &#x3D; elementRoot.parentElement;
-
-    // ADD COLUMNS ELEMENT HOST
-    if (this._columns.addColumnHost) {
-      if (elementHost) {
-        elementAddColumns &#x3D; elementHost;
-      }
-    }
-
-    if (elementHost?.isEqualNode(elementAddColumns)) {
-      elementHost &#x3D; elementAddColumns.parentElement;
-    }
-
-    // ADD ROW ELEMENT HOST
-    if (this._columns.addRowHost) {
-      if (elementHost &amp;&amp; !elementHost.classList.contains(&#x27;row&#x27;)) {
-        elementHost.classList.add(&#x27;row&#x27;);
-      }
-    }
-
-    if (elementHost?.classList.contains(&#x27;row&#x27;)) {
-      if (this.columnType &#x3D;&#x3D;&#x3D; &#x27;materialize&#x27;) {
-        elementAddColumns.classList.add(&#x27;col&#x27;);
-        // WIDTH Mobile Devices &lt;&#x3D; 600px
-        if (this._columns.sm) {
-          elementAddColumns.classList.add(&#x60;s${this._columns.sm}&#x60;);
-        } else {
-          elementAddColumns.classList.add(&#x60;s${this._columns.default}&#x60;);
-        }
-
-        // WIDTH Tablet Devices &gt; 600px
-        if (this._columns.md) {
-          elementAddColumns.classList.add(&#x60;m${this._columns.md}&#x60;);
-        }
-
-        // WIDTH Desktop Devices &gt; 992px
-        if (this._columns.lg) {
-          elementAddColumns.classList.add(&#x60;l${this._columns.lg}&#x60;);
-        }
-
-        // WIDTH Large Desktop Devices &gt; 1200px
-        if (this._columns.xl) {
-          elementAddColumns.classList.add(&#x60;xl${this._columns.xl}&#x60;);
-        }
-      } else if (this.columnType &#x3D;&#x3D;&#x3D; &#x27;bootstrap&#x27;) {
-        // WIDTH Extra small &lt; 576px
-        if (this._columns.default) {
-          elementAddColumns.classList.add(&#x60;col-${this._columns.default}&#x60;);
-        }
-
-        // WIDTH Small ≥ 576px
-        if (this._columns.sm) {
-          elementAddColumns.classList.add(&#x60;col-sm-${this._columns.sm}&#x60;);
-        }
-
-        // WIDTH Medium ≥ 768px
-        if (this._columns.md) {
-          elementAddColumns.classList.add(&#x60;col-md-${this._columns.md}&#x60;);
-        }
-
-        // WIDTH Large ≥ 992px
-        if (this._columns.lg) {
-          elementAddColumns.classList.add(&#x60;col-lg-${this._columns.lg}&#x60;);
-        }
-
-        // WIDTH Extra large ≥ 1200px
-        if (this._columns.xl) {
-          elementAddColumns.classList.add(&#x60;col-xl-${this._columns.xl}&#x60;);
-        }
-      }
-    }
+  ngOnDestroy() {
+    this._resize.destroy();
   }
 }
 </code></pre>
@@ -614,7 +458,7 @@ export class ColumnsDirective implements OnInit {
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
             var COMPODOC_CURRENT_PAGE_CONTEXT = 'directive';
-            var COMPODOC_CURRENT_PAGE_URL = 'ColumnsDirective.html';
+            var COMPODOC_CURRENT_PAGE_URL = 'ResizeDirective.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

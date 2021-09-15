@@ -214,21 +214,18 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="modules/NgTranslateModule.html" data-type="entity-link" >NgTranslateModule</a>
                                 <li class="chapter inner">
                                     <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
-                                        'data-target="#injectables-links-module-NgTranslateModule-f3ba5776c8753ea3bbd574d0a3355ee4"' : 'data-target="#xs-injectables-links-module-NgTranslateModule-f3ba5776c8753ea3bbd574d0a3355ee4"' }>
+                                        'data-target="#injectables-links-module-NgTranslateModule-6de4d7c6e089e6156f3c92a6620db674"' : 'data-target="#xs-injectables-links-module-NgTranslateModule-6de4d7c6e089e6156f3c92a6620db674"' }>
                                         <span class="icon ion-md-arrow-round-down"></span>
                                         <span>Injectables</span>
                                         <span class="icon ion-ios-arrow-down"></span>
                                     </div>
-                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-NgTranslateModule-f3ba5776c8753ea3bbd574d0a3355ee4"' :
-                                        'id="xs-injectables-links-module-NgTranslateModule-f3ba5776c8753ea3bbd574d0a3355ee4"' }>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="injectables-links-module-NgTranslateModule-6de4d7c6e089e6156f3c92a6620db674"' :
+                                        'id="xs-injectables-links-module-NgTranslateModule-6de4d7c6e089e6156f3c92a6620db674"' }>
                                         <li class="link">
-                                            <a href="injectables/ConfigService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ConfigService</a>
+                                            <a href="injectables/NgTranslateService.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >NgTranslateService</a>
                                         </li>
                                     </ul>
                                 </li>
-                            </li>
-                            <li class="link">
-                                <a href="modules/NgUtilsModule.html" data-type="entity-link" >NgUtilsModule</a>
                             </li>
                             <li class="link">
                                 <a href="modules/PipesModule.html" data-type="entity-link" >PipesModule</a>
@@ -267,6 +264,23 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                             </li>
                                         </ul>
                                     </li>
+                            </li>
+                            <li class="link">
+                                <a href="modules/ResizeDirectivesModule.html" data-type="entity-link" >ResizeDirectivesModule</a>
+                                <li class="chapter inner">
+                                    <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ?
+                                        'data-target="#directives-links-module-ResizeDirectivesModule-78eebfe34922ee5007ad2dc600f5e99e"' : 'data-target="#xs-directives-links-module-ResizeDirectivesModule-78eebfe34922ee5007ad2dc600f5e99e"' }>
+                                        <span class="icon ion-md-code-working"></span>
+                                        <span>Directives</span>
+                                        <span class="icon ion-ios-arrow-down"></span>
+                                    </div>
+                                    <ul class="links collapse" ${ isNormalMode ? 'id="directives-links-module-ResizeDirectivesModule-78eebfe34922ee5007ad2dc600f5e99e"' :
+                                        'id="xs-directives-links-module-ResizeDirectivesModule-78eebfe34922ee5007ad2dc600f5e99e"' }>
+                                        <li class="link">
+                                            <a href="directives/ResizeDirective.html" data-type="entity-link" data-context="sub-entity" data-context-id="modules" >ResizeDirective</a>
+                                        </li>
+                                    </ul>
+                                </li>
                             </li>
                             <li class="link">
                                 <a href="modules/RouteChangeModule.html" data-type="entity-link" >RouteChangeModule</a>
@@ -375,19 +389,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                         </ul>
                     </li>
-                        <li class="chapter">
-                            <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#injectables-links"' :
-                                'data-target="#xs-injectables-links"' }>
-                                <span class="icon ion-md-arrow-round-down"></span>
-                                <span>Injectables</span>
-                                <span class="icon ion-ios-arrow-down"></span>
-                            </div>
-                            <ul class="links collapse " ${ isNormalMode ? 'id="injectables-links"' : 'id="xs-injectables-links"' }>
-                                <li class="link">
-                                    <a href="injectables/MyTranslateService.html" data-type="entity-link" >MyTranslateService</a>
-                                </li>
-                            </ul>
-                        </li>
                     <li class="chapter">
                         <div class="simple menu-toggler" data-toggle="collapse" ${ isNormalMode ? 'data-target="#interceptors-links"' :
                             'data-target="#xs-interceptors-links"' }>
@@ -435,9 +436,6 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                                 <a href="interfaces/IColumnsConfig.html" data-type="entity-link" >IColumnsConfig</a>
                             </li>
                             <li class="link">
-                                <a href="interfaces/IConfig.html" data-type="entity-link" >IConfig</a>
-                            </li>
-                            <li class="link">
                                 <a href="interfaces/IConfigRequestTemplate.html" data-type="entity-link" >IConfigRequestTemplate</a>
                             </li>
                             <li class="link">
@@ -448,6 +446,9 @@ customElements.define('compodoc-menu', class extends HTMLElement {
                             </li>
                             <li class="link">
                                 <a href="interfaces/INavigatorTemplate.html" data-type="entity-link" >INavigatorTemplate</a>
+                            </li>
+                            <li class="link">
+                                <a href="interfaces/INgUtilsConfig.html" data-type="entity-link" >INgUtilsConfig</a>
                             </li>
                             <li class="link">
                                 <a href="interfaces/IRequestTemplate.html" data-type="entity-link" >IRequestTemplate</a>

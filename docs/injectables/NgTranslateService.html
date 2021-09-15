@@ -28,7 +28,7 @@
                    <compodoc-menu mode="normal"></compodoc-menu>
                </div>
                <!-- START CONTENT -->
-               <div class="content guard">
+               <div class="content injectable">
                    <div class="content-data">
 
 
@@ -37,11 +37,9 @@
 
 
 
-
-
 <ol class="breadcrumb">
-    <li>Guards</li>
-    <li >LoggedGuard</li>
+  <li>Injectables</li>
+  <li >NgTranslateService</li>
 </ol>
 
 <ul class="nav nav-tabs" role="tablist">
@@ -54,20 +52,19 @@
 </ul>
 
 <div class="tab-content">
-        <div class="tab-pane fade active in" id="c-info">
-            <p class="comment">
+    <div class="tab-pane fade active in" id="c-info">
+        <p class="comment">
             <h3>File</h3>
-            </p>
-            <p class="comment">
-                <code>projects/ng-utils/src/lib/guards/logged.guard.ts</code>
-            </p>
+        </p>
+        <p class="comment">
+            <code>projects/ng-utils/src/lib/services/translate/ng-translate.service.ts</code>
+        </p>
 
 
 
 
 
-
-                <section>
+            <section>
     <h3 id="index">Index</h3>
     <table class="table table-sm table-bordered index-table">
         <tbody>
@@ -81,7 +78,12 @@
                     <td class="col-md-4">
                         <ul class="index-list">
                             <li>
-                                <a href="#canActivate" >canActivate</a>
+                                    <span class="modifier">Async</span>
+                                <a href="#changeLanguage" >changeLanguage</a>
+                            </li>
+                            <li>
+                                    <span class="modifier">Async</span>
+                                <a href="#init" >init</a>
                             </li>
                         </ul>
                     </td>
@@ -95,18 +97,18 @@
     </table>
 </section>
 
-                <section>
+            <section>
     <h3 id="constructor">Constructor</h3>
         <table class="table table-sm table-bordered">
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(authJwtService: <a href="../injectables/AuthJwtService.html" target="_self">AuthJwtService</a>, router: <a href="https://angular.io/api/router/Router" target="_blank">Router</a>)</code>
+<code>constructor(httpClientService: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, translateService: TranslateService)</code>
                     </td>
                 </tr>
                         <tr>
                             <td class="col-md-4">
-                                <div class="io-line">Defined in <a href="" data-line="13" class="link-to-prism">projects/ng-utils/src/lib/guards/logged.guard.ts:13</a></div>
+                                <div class="io-line">Defined in <a href="" data-line="12" class="link-to-prism">projects/ng-utils/src/lib/services/translate/ng-translate.service.ts:12</a></div>
                             </td>
                         </tr>
 
@@ -124,10 +126,10 @@
                                         </thead>
                                         <tbody>
                                                 <tr>
-                                                        <td>authJwtService</td>
+                                                        <td>httpClientService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="../injectables/AuthJwtService.html" target="_self" >AuthJwtService</a></code>
+                                                                        <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -136,10 +138,10 @@
                                                     
                                                 </tr>
                                                 <tr>
-                                                        <td>router</td>
+                                                        <td>translateService</td>
                                                   
                                                         <td>
-                                                                        <code><a href="https://angular.io/api/router/Router" target="_blank" >Router</a></code>
+                                                                    <code>TranslateService</code>
                                                         </td>
                                                   
                                                     <td>
@@ -156,7 +158,7 @@
         </table>
 </section>
 
-                <section>
+            <section>
     
     <h3 id="methods">
         Methods
@@ -165,24 +167,26 @@
         <tbody>
             <tr>
                 <td class="col-md-4">
-                    <a name="canActivate"></a>
+                    <a name="changeLanguage"></a>
                     <span class="name">
-                        <span ><b>canActivate</b></span>
-                        <a href="#canActivate"><span class="icon ion-ios-link"></span></a>
+                        <span class="modifier">Async</span>
+                        <span ><b>changeLanguage</b></span>
+                        <a href="#changeLanguage"><span class="icon ion-ios-link"></span></a>
                     </span>
                 </td>
             </tr>
             <tr>
                 <td class="col-md-4">
-<code>canActivate(next: <a href="https://angular.io/api/router/ActivatedRouteSnapshot" target="_blank">ActivatedRouteSnapshot</a>, state: <a href="https://angular.io/api/router/RouterStateSnapshot" target="_blank">RouterStateSnapshot</a>)</code>
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>changeLanguage(language: <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank">string</a>)</code>
                 </td>
             </tr>
 
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="16"
-                            class="link-to-prism">projects/ng-utils/src/lib/guards/logged.guard.ts:16</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="44"
+                            class="link-to-prism">projects/ng-utils/src/lib/services/translate/ng-translate.service.ts:44</a></div>
                 </td>
             </tr>
 
@@ -202,21 +206,9 @@
                             </thead>
                             <tbody>
                                 <tr>
-                                    <td>next</td>
+                                    <td>language</td>
                                     <td>
-                                                <code><a href="https://angular.io/api/router/ActivatedRouteSnapshot" target="_blank" >ActivatedRouteSnapshot</a></code>
-                                    </td>
-
-                                    <td>
-                                        No
-                                    </td>
-
-
-                                </tr>
-                                <tr>
-                                    <td>state</td>
-                                    <td>
-                                                <code><a href="https://angular.io/api/router/RouterStateSnapshot" target="_blank" >RouterStateSnapshot</a></code>
+                                                <code><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/string" target="_blank" >string</a></code>
                                     </td>
 
                                     <td>
@@ -231,7 +223,77 @@
                     <div>
                     </div>
                     <div class="io-description">
-                        <b>Returns : </b>    <code>Observable | Promise | boolean</code>
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+
+                    </div>
+                    <div class="io-description">
+                        
+                    </div>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+    <table class="table table-sm table-bordered">
+        <tbody>
+            <tr>
+                <td class="col-md-4">
+                    <a name="init"></a>
+                    <span class="name">
+                        <span class="modifier">Async</span>
+                        <span ><b>init</b></span>
+                        <a href="#init"><span class="icon ion-ios-link"></span></a>
+                    </span>
+                </td>
+            </tr>
+            <tr>
+                <td class="col-md-4">
+                    <span class="modifier-icon icon ion-ios-reset"></span>
+                    <code>init(config?: <a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank">any</a>)</code>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+                    <div class="io-line">Defined in <a href="" data-line="18"
+                            class="link-to-prism">projects/ng-utils/src/lib/services/translate/ng-translate.service.ts:18</a></div>
+                </td>
+            </tr>
+
+
+            <tr>
+                <td class="col-md-4">
+
+                    <div class="io-description">
+                        <b>Parameters :</b>
+                        <table class="params">
+                            <thead>
+                                <tr>
+                                    <td>Name</td>
+                                    <td>Type</td>
+                                    <td>Optional</td>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <tr>
+                                    <td>config</td>
+                                    <td>
+                                                <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
+                                    </td>
+
+                                    <td>
+                                        Yes
+                                    </td>
+
+
+                                </tr>
+                            </tbody>
+                        </table>
+                    </div>
+                    <div>
+                    </div>
+                    <div class="io-description">
+                        <b>Returns : </b>        <code><a href="https://www.typescriptlang.org/docs/handbook/basic-types.html" target="_blank" >any</a></code>
 
                     </div>
                     <div class="io-description">
@@ -242,41 +304,86 @@
         </tbody>
     </table>
 </section>
-        </div>
+
+    </div>
 
 
-        <div class="tab-pane fade  tab-source-code" id="c-source">
-            <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { Injectable } from &#x27;@angular/core&#x27;;
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-  Router,
-} from &#x27;@angular/router&#x27;;
-import { Observable } from &#x27;rxjs&#x27;;
-import { ngUtilsConfig } from &#x27;../config/config.default&#x27;;
-import { AuthJwtService } from &#x27;../services/http/auth-jwt.service&#x27;;
+    <div class="tab-pane fade  tab-source-code" id="c-source">
+        <pre class="line-numbers compodoc-sourcecode"><code class="language-typescript">import { HttpClient } from &#x27;@angular/common/http&#x27;;
+import { Injectable } from &#x27;@angular/core&#x27;;
+import { handleTry } from &#x27;@douglas-serena/utils&#x27;;
+import { TranslateService } from &#x27;@ngx-translate/core&#x27;;
+import { catchError } from &#x27;rxjs/operators&#x27;;
+import { of } from &#x27;rxjs&#x27;;
+import { ngUtilsConfig } from &#x27;../../config/config.default&#x27;;
 
-@Injectable()
-export class LoggedGuard implements CanActivate {
-  constructor(private authJwtService: AuthJwtService, private router: Router) {}
+@Injectable({
+  providedIn: &#x27;root&#x27;,
+})
+export class NgTranslateService {
+  constructor(
+    private httpClientService: HttpClient,
+    private translateService: TranslateService
+  ) {}
 
-  canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
-  ): Observable&lt;boolean&gt; | Promise&lt;boolean&gt; | boolean {
-    if (this.authJwtService.logged) {
-      this.router.navigate(
-        ngUtilsConfig.guards?.logged?.redirectLogged as string[]
-      );
-      return false;
+  async init(config?: any) {
+    const { language, path, suffix } &#x3D; ngUtilsConfig.services?.translate!;
+
+    const defaultLanguage &#x3D; language?.default!;
+    let locale &#x3D; defaultLanguage;
+
+    if (language?.useNavigator) {
+      locale &#x3D; this.translateService.getBrowserLang() || locale;
     }
-    return true;
+    if (language?.useSaved) {
+      locale &#x3D; localStorage.getItem(language?.nameSave!) || locale;
+    }
+
+    const [response, error] &#x3D; await handleTry&lt;any&gt;(
+      this.httpClientService.get(&#x60;${path}/${locale}${suffix}&#x60;)
+    );
+
+    if (response) {
+      this.translateService.setTranslation(defaultLanguage, response || {});
+      this.translateService.setDefaultLang(defaultLanguage);
+      this.translateService.use(locale);
+    } else {
+      console.error(error);
+    }
+  }
+
+  async changeLanguage(language: string) {
+    const {
+      path,
+      suffix,
+      language: _language,
+    } &#x3D; ngUtilsConfig.services?.translate!;
+
+    const includeLanguage &#x3D; this.translateService.getLangs().includes(language);
+    if (!includeLanguage) {
+      const [data, error] &#x3D; await handleTry&lt;Object&gt;(
+        this.httpClientService
+          .get(&#x60;${path}/${language}${suffix}&#x60;)
+          .pipe(catchError(() &#x3D;&gt; of(null)))
+      );
+
+      if (!error) {
+        this.translateService.setTranslation(language, data || {});
+      }
+    }
+
+    this.translateService.use(language);
+    if (_language?.useSaved) {
+      localStorage.setItem(_language?.nameSave!, language);
+    }
   }
 }
 </code></pre>
-        </div>
+    </div>
+
 </div>
+
+
 
 
 
@@ -303,8 +410,8 @@ export class LoggedGuard implements CanActivate {
 
        <script>
             var COMPODOC_CURRENT_PAGE_DEPTH = 1;
-            var COMPODOC_CURRENT_PAGE_CONTEXT = 'guard';
-            var COMPODOC_CURRENT_PAGE_URL = 'LoggedGuard.html';
+            var COMPODOC_CURRENT_PAGE_CONTEXT = 'injectable';
+            var COMPODOC_CURRENT_PAGE_URL = 'NgTranslateService.html';
             var MAX_SEARCH_RESULTS = 15;
        </script>
 

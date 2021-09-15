@@ -14,13 +14,13 @@
 <title>cluster_MaskedDirectivesModule</title>
 <polygon fill="none" stroke="black" stroke-dasharray="1,5" points="8,-32.8 8,-342.39 718,-342.39 718,-32.8 8,-32.8"/>
 </g>
-<g id="clust2" class="cluster">
-<title>cluster_MaskedDirectivesModule_declarations</title>
-<polygon fill="none" stroke="black" points="299,-152.39 299,-204.39 427,-204.39 427,-152.39 299,-152.39"/>
-</g>
 <g id="clust5" class="cluster">
 <title>cluster_MaskedDirectivesModule_exports</title>
 <polygon fill="none" stroke="black" points="297,-282.39 297,-334.39 429,-334.39 429,-282.39 297,-282.39"/>
+</g>
+<g id="clust2" class="cluster">
+<title>cluster_MaskedDirectivesModule_declarations</title>
+<polygon fill="none" stroke="black" points="299,-152.39 299,-204.39 427,-204.39 427,-152.39 299,-152.39"/>
 </g>
 <g id="clust3" class="cluster">
 <title>cluster_MaskedDirectivesModule_MaskedDirective_providers</title>

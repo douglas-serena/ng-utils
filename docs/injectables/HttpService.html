@@ -144,7 +144,7 @@
             <tbody>
                 <tr>
                     <td class="col-md-4">
-<code>constructor(httpClient: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>, configService: <a href="../injectables/ConfigService.html" target="_self">ConfigService</a>)</code>
+<code>constructor(httpClient: <a href="https://angular.io/api/common/http/HttpClient" target="_blank">HttpClient</a>)</code>
                     </td>
                 </tr>
                         <tr>
@@ -171,18 +171,6 @@
                                                   
                                                         <td>
                                                                         <code><a href="https://angular.io/api/common/http/HttpClient" target="_blank" >HttpClient</a></code>
-                                                        </td>
-                                                  
-                                                    <td>
-                                                            No
-                                                    </td>
-                                                    
-                                                </tr>
-                                                <tr>
-                                                        <td>configService</td>
-                                                  
-                                                        <td>
-                                                                        <code><a href="../injectables/ConfigService.html" target="_self" >ConfigService</a></code>
                                                         </td>
                                                   
                                                     <td>
@@ -224,8 +212,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="106"
-                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:106</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="103"
+                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:103</a></div>
                 </td>
             </tr>
 
@@ -324,8 +312,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="25"
-                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:25</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="22"
+                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:22</a></div>
                 </td>
             </tr>
 
@@ -424,8 +412,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="43"
-                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:43</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="40"
+                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:40</a></div>
                 </td>
             </tr>
 
@@ -524,8 +512,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="59"
-                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:59</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="56"
+                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:56</a></div>
                 </td>
             </tr>
 
@@ -636,8 +624,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="124"
-                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:124</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="121"
+                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:121</a></div>
                 </td>
             </tr>
 
@@ -736,8 +724,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="81"
-                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:81</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="78"
+                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:78</a></div>
                 </td>
             </tr>
 
@@ -848,8 +836,8 @@
 
             <tr>
                 <td class="col-md-4">
-                    <div class="io-line">Defined in <a href="" data-line="132"
-                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:132</a></div>
+                    <div class="io-line">Defined in <a href="" data-line="129"
+                            class="link-to-prism">projects/ng-utils/src/lib/services/http/http.service.ts:129</a></div>
                 </td>
             </tr>
 
@@ -989,7 +977,7 @@
 import { Injectable } from &#x27;@angular/core&#x27;;
 
 import { Observable } from &#x27;rxjs&#x27;;
-import { ConfigService } from &#x27;../../config/config.service&#x27;;
+import { ngUtilsConfig } from &#x27;../../config/config.default&#x27;;
 import { IHttpOption, IHttpRequest } from &#x27;./interfaces/http-option.interface&#x27;;
 
 @Injectable({
@@ -999,14 +987,11 @@ export class HttpService {
   API_URL!: string;
 
   get config() {
-    return this.configService.config?.services?.http;
+    return ngUtilsConfig.services?.http;
   }
 
-  constructor(
-    private httpClient: HttpClient,
-    private configService: ConfigService
-  ) {
-    this.API_URL &#x3D; configService.config?.services?.http?.apiUrl as string;
+  constructor(private httpClient: HttpClient) {
+    this.API_URL &#x3D; ngUtilsConfig.services?.http?.apiUrl as string;
   }
 
   get&lt;T &#x3D; any&gt;(
