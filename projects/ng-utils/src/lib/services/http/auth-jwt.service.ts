@@ -1,15 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
-import { ConfigService } from '../../config/config.service';
+import { ngUtilsConfig } from '../../config/config.default';
 
 @Injectable()
 export class AuthJwtService {
   nameSaveToken!: string;
 
-  constructor(private router: Router, private configService: ConfigService) {
-    this.nameSaveToken = configService.config?.services?.auth
-      ?.nameSaveToken as string;
+  constructor(private router: Router) {
+    this.nameSaveToken = ngUtilsConfig.services?.auth?.nameSaveToken as string;
   }
 
   public set token(token) {
@@ -31,7 +30,7 @@ export class AuthJwtService {
   logout() {
     this.removeToken();
     this.router.navigate(
-      this.configService.config?.services?.auth?.redirectLogout as string[]
+      ngUtilsConfig.services?.auth?.redirectLogout as string[]
     );
   }
 

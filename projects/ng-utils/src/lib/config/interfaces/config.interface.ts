@@ -1,4 +1,4 @@
-export interface IConfig {
+export interface INgUtilsConfig {
   columnType?: 'bootstrap' | 'materialize';
   guards?: {
     auth?: { redirectLoggedOut?: string[] };

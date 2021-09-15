@@ -1,6 +1,6 @@
-import { IConfig } from './interfaces/config.interface';
+import { INgUtilsConfig } from './interfaces/config.interface';
 
-export const defaultConfig: IConfig = {
+export const ngUtilsConfig: INgUtilsConfig = {
   columnType: 'bootstrap',
   guards: {
     auth: { redirectLoggedOut: ['/login'] },
@@ -14,7 +14,7 @@ export const defaultConfig: IConfig = {
       language: {
         default: 'en',
         useSaved: true,
-        useNavigator: true,
+        useNavigator: false,
         nameSave: '_locale_language',
       },
       path: '/assets/i18n',

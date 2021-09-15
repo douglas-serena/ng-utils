@@ -1,5 +1,5 @@
-import { Directive, ElementRef, Input, OnInit, Renderer2 } from '@angular/core';
-import { ConfigService } from '../../config/config.service';
+import { Directive, ElementRef, Input, OnInit } from '@angular/core';
+import { ngUtilsConfig } from '../../config/config.default';
 import { IColumnsConfig } from './interfaces/columns.interface';
 
 @Directive({
@@ -23,15 +23,11 @@ export class ColumnsDirective implements OnInit {
     }
   }
 
-  constructor(
-    private renderer2: Renderer2,
-    private configService: ConfigService,
-    private elementRef: ElementRef<HTMLInputElement>
-  ) {}
+  constructor(private elementRef: ElementRef<HTMLInputElement>) {}
 
   ngOnInit() {
     this._element = this.elementRef.nativeElement;
-    this.columnType = this.columnType || this.configService.config.columnType;
+    this.columnType = this.columnType || ngUtilsConfig.columnType;
 
     this.updateColumns();
   }
@@ -61,70 +57,52 @@ export class ColumnsDirective implements OnInit {
 
     if (elementHost?.classList.contains('row')) {
       if (this.columnType === 'materialize') {
-        this.renderer2.addClass(elementAddColumns, 'col');
+        elementAddColumns.classList.add('col');
         // WIDTH Mobile Devices <= 600px
         if (this._columns.sm) {
-          this.renderer2.addClass(elementAddColumns, `s${this._columns.sm}`);
+          elementAddColumns.classList.add(`s${this._columns.sm}`);
         } else {
-          this.renderer2.addClass(
-            elementAddColumns,
-            `s${this._columns.default}`
-          );
+          elementAddColumns.classList.add(`s${this._columns.default}`);
         }
 
         // WIDTH Tablet Devices > 600px
         if (this._columns.md) {
-          this.renderer2.addClass(elementAddColumns, `m${this._columns.md}`);
+          elementAddColumns.classList.add(`m${this._columns.md}`);
         }
 
         // WIDTH Desktop Devices > 992px
         if (this._columns.lg) {
-          this.renderer2.addClass(elementAddColumns, `l${this._columns.lg}`);
+          elementAddColumns.classList.add(`l${this._columns.lg}`);
         }
 
         // WIDTH Large Desktop Devices > 1200px
         if (this._columns.xl) {
-          this.renderer2.addClass(elementAddColumns, `xl${this._columns.xl}`);
+          elementAddColumns.classList.add(`xl${this._columns.xl}`);
         }
       } else if (this.columnType === 'bootstrap') {
         // WIDTH Extra small < 576px
         if (this._columns.default) {
-          this.renderer2.addClass(
-            elementAddColumns,
-            `col-${this._columns.default}`
-          );
+          elementAddColumns.classList.add(`col-${this._columns.default}`);
         }
 
         // WIDTH Small ≥ 576px
         if (this._columns.sm) {
-          this.renderer2.addClass(
-            elementAddColumns,
-            `col-sm-${this._columns.sm}`
-          );
+          elementAddColumns.classList.add(`col-sm-${this._columns.sm}`);
         }
 
         // WIDTH Medium ≥ 768px
         if (this._columns.md) {
-          this.renderer2.addClass(
-            elementAddColumns,
-            `col-md-${this._columns.md}`
-          );
+          elementAddColumns.classList.add(`col-md-${this._columns.md}`);
         }
 
         // WIDTH Large ≥ 992px
         if (this._columns.lg) {
-          this.renderer2.addClass(
-            elementAddColumns,
-            `col-lg-${this._columns.lg}`
-          );
+          elementAddColumns.classList.add(`col-lg-${this._columns.lg}`);
         }
 
         // WIDTH Extra large ≥ 1200px
         if (this._columns.xl) {
-          this.renderer2.addClass(
-            elementAddColumns,
-            `col-xl-${this._columns.xl}`
-          );
+          elementAddColumns.classList.add(`col-xl-${this._columns.xl}`);
         }
       }
     }

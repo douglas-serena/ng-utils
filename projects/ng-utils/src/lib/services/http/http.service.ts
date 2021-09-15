@@ -2,7 +2,7 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { ConfigService } from '../../config/config.service';
+import { ngUtilsConfig } from '../../config/config.default';
 import { IHttpOption, IHttpRequest } from './interfaces/http-option.interface';
 
 @Injectable({
@@ -12,14 +12,11 @@ export class HttpService {
   API_URL!: string;
 
   get config() {
-    return this.configService.config?.services?.http;
+    return ngUtilsConfig.services?.http;
   }
 
-  constructor(
-    private httpClient: HttpClient,
-    private configService: ConfigService
-  ) {
-    this.API_URL = configService.config?.services?.http?.apiUrl as string;
+  constructor(private httpClient: HttpClient) {
+    this.API_URL = ngUtilsConfig.services?.http?.apiUrl as string;
   }
 
   get<T = any>(
