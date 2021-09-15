@@ -7,7 +7,7 @@ export * from './lib/pipes/if-else.pipe';
 export * from './lib/pipes/relative-time.pipe';
 export * from './lib/pipes/masked.pipe';
 export * from './lib/pipes/sanitizer/sanitizer-url.pipe';
-export * from './lib/pipes/sanitizer/sanitizer-script.pipe';
+export * from './lib/pipes/sanitizer/sanitizer-style.pipe';
 export * from './lib/pipes/sanitizer/sanitizer-script.pipe';
 export * from './lib/pipes/sanitizer/sanitizer-html.pipe';
 // PIPES MODULE
