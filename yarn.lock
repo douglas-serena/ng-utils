@@ -1672,10 +1672,10 @@
   resolved "https://registry.yarnpkg.com/@discoveryjs/json-ext/-/json-ext-0.5.2.tgz#8f03a22a04de437254e8ce8cc84ba39689288752"
   integrity sha512-HyYEUDeIj5rRQU2Hk5HTB2uHsbRQpF70nvMhVzi+VJR0X+xNEhjPui4/kBf3VeH/wqD28PT4sVOm8qqLjBrSZg==
 
-"@douglas-serena/utils@^0.3.3":
-  version "0.3.3"
-  resolved "https://registry.yarnpkg.com/@douglas-serena/utils/-/utils-0.3.3.tgz#f8a35e14f9e4909f04d434098b9159088e346d9a"
-  integrity sha512-31efkL4w+piYanJo7Oo9ysi4n2IHWKnsURm3V3f9i2mQ9PQfyeWfA13xe1i7Fd51i/GG2LfQelSY4VtDpq1sIA==
+"@douglas-serena/utils@^1.0.1":
+  version "1.0.1"
+  resolved "https://registry.yarnpkg.com/@douglas-serena/utils/-/utils-1.0.1.tgz#678ef44d04fb914f04340144dccbf5c21694d016"
+  integrity sha512-0jnhxVS04gDUbe/+2uQ2ee6UZL/mnqGznUK9d42erqZm7ZSAwD4dG0mVTiCnJFhYMlQDqSLzvbUPlwxUpqLCnQ==
   dependencies:
     dayjs "^1.10.4"
     imask "^6.1.0"

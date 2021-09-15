@@ -14,6 +14,7 @@ export function initTranslate(
     new Promise<boolean>((resolve: (res: boolean) => void) => {
       const { language, path, suffix } =
         configService.config.services?.translate!;
+
       const defaultLanguage = language?.default!;
       let locale = defaultLanguage;
 

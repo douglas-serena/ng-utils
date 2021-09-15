@@ -6,16 +6,12 @@ import {
   Router,
 } from '@angular/router';
 import { Observable } from 'rxjs';
-import { ConfigService } from '../config/config.service';
+import { ngUtilsConfig } from '../config/config.default';
 import { AuthJwtService } from '../services/http/auth-jwt.service';
 
 @Injectable()
 export class AuthGuard implements CanActivate {
-  constructor(
-    private router: Router,
-    private authJwtService: AuthJwtService,
-    private configService: ConfigService
-  ) {}
+  constructor(private router: Router, private authJwtService: AuthJwtService) {}
 
   canActivate(
     next: ActivatedRouteSnapshot,
@@ -25,7 +21,7 @@ export class AuthGuard implements CanActivate {
       return true;
     }
     this.router.navigate(
-      this.configService.config.guards?.auth?.redirectLoggedOut as string[]
+      ngUtilsConfig.guards?.auth?.redirectLoggedOut as string[]
     );
 
     return false;

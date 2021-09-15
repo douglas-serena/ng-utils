@@ -1,7 +1,5 @@
-/*
- * Public API Surface of ng-utils
- */
-export * from './lib/ng-utils.module';
+export * from './lib/config/config';
+export * from './lib/config/interfaces/config.interface';
 
 // PIPES
 export * from './lib/pipes/else.pipe';
@@ -9,7 +7,7 @@ export * from './lib/pipes/if-else.pipe';
 export * from './lib/pipes/relative-time.pipe';
 export * from './lib/pipes/masked.pipe';
 export * from './lib/pipes/sanitizer/sanitizer-url.pipe';
-export * from './lib/pipes/sanitizer/sanitizer-script.pipe';
+export * from './lib/pipes/sanitizer/sanitizer-style.pipe';
 export * from './lib/pipes/sanitizer/sanitizer-script.pipe';
 export * from './lib/pipes/sanitizer/sanitizer-html.pipe';
 // PIPES MODULE
@@ -24,6 +22,7 @@ export * from './lib/guards/title.guard';
 export * from './lib/guards/guard.module';
 
 // DIRECTIVES
+export * from './lib/directives/resize/resize.directive';
 export * from './lib/directives/columns/columns.directive';
 export * from './lib/directives/file-control/file-control.directive';
 export * from './lib/directives/masked/masked.directive';
@@ -33,6 +32,7 @@ export * from './lib/directives/interaction/interaction.directive';
 export * from './lib/directives/ng-for-in/ng-for-in.directive';
 export * from './lib/directives/contenteditable/contenteditable-value-accessor.directive';
 // DIRECTIVE MODULE
+export * from './lib/directives/resize/resize.module';
 export * from './lib/directives/columns/columns.module';
 export * from './lib/directives/file-control/file-control.module';
 export * from './lib/directives/masked/masked.module';
@@ -45,7 +45,7 @@ export * from './lib/directives/contenteditable/contenteditable.module';
 // SERVICES
 export * from './lib/services/route-change/route-change.service';
 export * from './lib/services/screen-points/screen-points.service';
-export * from './lib/services/translate/my-translate.service';
+export * from './lib/services/translate/ng-translate.service';
 export * from './lib/services/http/auth-jwt.interceptor';
 export * from './lib/services/http/auth-jwt.service';
 export * from './lib/services/http/http.service';
