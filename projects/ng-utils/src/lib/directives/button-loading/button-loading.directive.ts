@@ -6,7 +6,7 @@ import {
   ViewContainerRef,
 } from '@angular/core';
 import { Directive, Input } from '@angular/core';
-import { defaultConfig } from '../../config/config.default';
+import { ngUtilsConfig } from '../../config/config.default';
 
 @Directive({
   selector: '[btn-loading]',
@@ -44,7 +44,7 @@ export class ButtonLoadingDirective {
 
     this.viewContainerRef.clear();
     const factory = this.componentFactoryResolver.resolveComponentFactory(
-      defaultConfig.directives?.buttonLoading?.componentLoading
+      ngUtilsConfig.directives?.buttonLoading?.componentLoading
     );
 
     this.containerRef = this.viewContainerRef.createComponent(factory);
