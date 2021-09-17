@@ -7,4 +7,4 @@ import { InteractionDirective } from './interaction.directive';
   declarations: [InteractionDirective],
   exports: [InteractionDirective],
 })
-export class InteractionDirectivesModule {}
+export class InteractionDirectiveModule {}

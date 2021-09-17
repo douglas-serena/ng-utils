@@ -7,4 +7,4 @@ import { ExpandDirective } from './expand.directive';
   declarations: [ExpandDirective],
   exports: [ExpandDirective],
 })
-export class ExpandDirectivesModule {}
+export class ExpandDirectiveModule {}

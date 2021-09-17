@@ -7,4 +7,4 @@ import { FileControlAccessor } from './file-control.directive';
   declarations: [FileControlAccessor],
   exports: [FileControlAccessor],
 })
-export class FileControlDirectivesModule {}
+export class FileControlDirectiveModule {}

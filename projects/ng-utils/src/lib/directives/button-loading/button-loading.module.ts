@@ -7,4 +7,4 @@ import { ButtonLoadingDirective } from './button-loading.directive';
   declarations: [ButtonLoadingDirective],
   exports: [ButtonLoadingDirective],
 })
-export class ButtonLoadingDirectivesModule {}
+export class ButtonLoadingDirectiveModule {}

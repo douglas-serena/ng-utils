@@ -7,4 +7,4 @@ import { MaskedDirective } from './masked.directive';
   declarations: [MaskedDirective],
   exports: [MaskedDirective],
 })
-export class MaskedDirectivesModule {}
+export class MaskedDirectiveModule {}
