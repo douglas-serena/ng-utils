@@ -1,15 +1,16 @@
 {
   "name": "@douglas-serena/ng-utils",
-  "version": "1.0.0",
+  "version": "2.0.12",
   "peerDependencies": {
     "@angular/common": "^12.0.2",
     "@angular/core": "^12.0.2"
   },
   "dependencies": {
     "tslib": "^2.1.0",
-    "dayjs": "^1.10.4",
+    "dayjs": "^1.10.6",
     "jwt-decode": "^3.1.2",
     "@ngx-translate/core": "^13.0.0",
-    "@douglas-serena/utils": "^1.0.1"
+    "@douglas-serena/utils": "^1.4.13",
+    "@douglas-serena/decorators": "^1.0.11"
   }
 }

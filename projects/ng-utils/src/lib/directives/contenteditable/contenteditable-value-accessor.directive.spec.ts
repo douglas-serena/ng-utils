@@ -2,15 +2,15 @@ import { Component } from '@angular/core';
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormBuilder, FormGroup, ReactiveFormsModule } from '@angular/forms';
 import { By } from '@angular/platform-browser';
-import { ContenteditableModule } from './contenteditable.module';
+import { ContenteditableControlAccessorModule } from './contenteditable-value-accessor.module';
 
-describe(ContenteditableModule.name, () => {
+describe(ContenteditableControlAccessorModule.name, () => {
   let fixture: ComponentFixture<ControlendDirectiveTestComponent>;
   let component: ControlendDirectiveTestComponent;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
-      imports: [ReactiveFormsModule, ContenteditableModule],
+      imports: [ReactiveFormsModule, ContenteditableControlAccessorModule],
       declarations: [ControlendDirectiveTestComponent],
     }).compileComponents();
 

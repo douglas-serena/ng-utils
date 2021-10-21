@@ -4,7 +4,7 @@ import { handleTry } from '@douglas-serena/utils';
 import { TranslateService } from '@ngx-translate/core';
 import { catchError } from 'rxjs/operators';
 import { of } from 'rxjs';
-import { ngUtilsConfig } from '../../config/config.default';
+import { configuration } from '../../configuration/public-api';
 
 @Injectable({
   providedIn: 'root',
@@ -16,7 +16,7 @@ export class NgTranslateService {
   ) {}
 
   async init(config?: any) {
-    const { language, path, suffix } = ngUtilsConfig.services?.translate!;
+    const { language, path, suffix } = configuration.services.translate;
 
     const defaultLanguage = language?.default!;
     let locale = defaultLanguage;
@@ -46,7 +46,7 @@ export class NgTranslateService {
       path,
       suffix,
       language: _language,
-    } = ngUtilsConfig.services?.translate!;
+    } = configuration.services.translate;
 
     const includeLanguage = this.translateService.getLangs().includes(language);
     if (!includeLanguage) {

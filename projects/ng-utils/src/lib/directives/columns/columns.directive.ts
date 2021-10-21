@@ -1,20 +1,20 @@
 import { Directive, ElementRef, Input, OnInit } from '@angular/core';
-import { ngUtilsConfig } from '../../config/config.default';
-import { IColumnsConfig } from './interfaces/columns.interface';
+import { configuration } from '../../configuration/public-api';
+import { IConfigColumns } from '../@types/interfaces/config-columns.interface';
 
 @Directive({
   selector: '[columns]',
 })
 export class ColumnsDirective implements OnInit {
   _element!: HTMLElement;
-  _columns: IColumnsConfig = {
+  _columns: IConfigColumns = {
     addColumnHost: false,
     addRowHost: true,
     default: 12,
   };
 
   @Input() columnType!: 'bootstrap' | 'materialize';
-  @Input() set columns(columns: IColumnsConfig | string) {
+  @Input() set columns(columns: IConfigColumns | string) {
     if (!(typeof columns === 'string')) {
       Object.assign(this._columns, columns);
       if (this._element) {
@@ -27,7 +27,7 @@ export class ColumnsDirective implements OnInit {
 
   ngOnInit() {
     this._element = this.elementRef.nativeElement;
-    this.columnType = this.columnType || ngUtilsConfig.columnType;
+    this.columnType = this.columnType || configuration.columnType;
 
     this.updateColumns();
   }

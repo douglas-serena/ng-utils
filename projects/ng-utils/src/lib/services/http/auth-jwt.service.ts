@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { Router } from '@angular/router';
 import jwt_decode from 'jwt-decode';
-import { ngUtilsConfig } from '../../config/config.default';
+import { configuration } from '../../configuration/public-api';
 
 @Injectable()
 export class AuthJwtService {
-  nameSaveToken!: string;
+  private nameSaveToken!: string;
 
   constructor(private router: Router) {
-    this.nameSaveToken = ngUtilsConfig.services?.auth?.nameSaveToken as string;
+    this.nameSaveToken = configuration.services.auth.nameSaveToken;
   }
 
   public set token(token) {
@@ -16,25 +16,38 @@ export class AuthJwtService {
   }
 
   public get token(): string {
-    return localStorage.getItem(`${this.nameSaveToken}`) as string;
+    return localStorage.getItem(`${this.nameSaveToken}`) || '';
   }
 
-  get tokenDecode() {
+  public get tokenDecode() {
     return jwt_decode(this.token) as any;
   }
 
-  get logged() {
-    return this.token?.length > 0;
+  public get decode() {
+    return this.tokenDecode;
   }
 
-  logout() {
+  public get logged() {
+    if (this.token?.length > 0) {
+      if (
+        configuration.services.auth.validExpired &&
+        Date.now() >= this.decode.exp * 1000
+      ) {
+        this.removeToken();
+        return false;
+      }
+      return true;
+    }
+
+    return false;
+  }
+
+  public logout() {
     this.removeToken();
-    this.router.navigate(
-      ngUtilsConfig.services?.auth?.redirectLogout as string[]
-    );
+    this.router.navigate(configuration.services.auth.redirectLogout);
   }
 
-  removeToken() {
+  public removeToken() {
     localStorage.removeItem(`${this.nameSaveToken}`);
   }
 }

@@ -1,19 +1,16 @@
 import { HttpClient } from '@angular/common/http';
 import { TranslateService } from '@ngx-translate/core';
-import { forkJoin } from 'rxjs';
+import { configuration } from './../../configuration/constants/configuration.constant';
 import { of } from 'rxjs';
 import { catchError } from 'rxjs/operators';
-import { ConfigService } from '../../config/config.service';
 
 export function initTranslate(
-  configService: ConfigService,
   httpClientService: HttpClient,
   translateService: TranslateService
 ) {
   return () =>
     new Promise<boolean>((resolve: (res: boolean) => void) => {
-      const { language, path, suffix } =
-        configService.config.services?.translate!;
+      const { language, path, suffix } = configuration.services.translate!;
 
       const defaultLanguage = language?.default!;
       let locale = defaultLanguage;

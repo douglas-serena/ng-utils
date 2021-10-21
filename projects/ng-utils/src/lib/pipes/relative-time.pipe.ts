@@ -4,9 +4,7 @@ import * as dayjs from 'dayjs';
 
 dayjs.extend(relativeTime);
 
-@Pipe({
-  name: 'relativeTime',
-})
+@Pipe({ name: 'relativeTime' })
 export class RelativeTimePipe implements PipeTransform {
   transform(value: any, time: 'last' | 'future' = 'future'): any {
     if (time === 'future') {

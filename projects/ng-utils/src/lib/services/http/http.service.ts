@@ -2,8 +2,11 @@ import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 
 import { Observable } from 'rxjs';
-import { ngUtilsConfig } from '../../config/config.default';
-import { IHttpOption, IHttpRequest } from './interfaces/http-option.interface';
+import { configuration } from '../../configuration/public-api';
+import {
+  IHttpOption,
+  IHttpRequest,
+} from './@types/interfaces/http-option.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -12,11 +15,11 @@ export class HttpService {
   API_URL!: string;
 
   get config() {
-    return ngUtilsConfig.services?.http;
+    return configuration.services.http;
   }
 
   constructor(private httpClient: HttpClient) {
-    this.API_URL = ngUtilsConfig.services?.http?.apiUrl as string;
+    this.API_URL = configuration.services.http.apiUrl;
   }
 
   get<T = any>(
@@ -120,17 +123,22 @@ export class HttpService {
 
   request<T = any>(
     path: string,
-    method: 'get' | 'post' | 'put' | 'delete',
+    method: string,
     options?: IHttpRequest
   ): Observable<T> {
     return this.httpClient.request(method, path, options) as Observable<T>;
   }
 
-  upload(path: string, form: FormData, options?: IHttpRequest): any {
+  upload(
+    path: string,
+    form: FormData,
+    method?: string,
+    options?: IHttpRequest
+  ): any {
     const contentHeaders = new HttpHeaders();
     contentHeaders.append('Content-Type', 'multipart/form-data');
 
-    return this.httpClient.request('post', `${this.API_URL}${path}`, {
+    return this.httpClient.request(method || 'post', `${this.API_URL}${path}`, {
       body: form,
       observe: 'events',
       reportProgress: true,

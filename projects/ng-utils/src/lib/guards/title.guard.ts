@@ -1,23 +1,17 @@
 import { Injectable } from '@angular/core';
-import {
-  CanActivate,
-  ActivatedRouteSnapshot,
-  RouterStateSnapshot,
-} from '@angular/router';
+import { CanActivate, ActivatedRouteSnapshot } from '@angular/router';
 import { Observable } from 'rxjs';
 import { Title } from '@angular/platform-browser';
-import { ngUtilsConfig } from '../config/config.default';
-
+import { configuration } from '../configuration/public-api';
 @Injectable()
 export class TitleGuard implements CanActivate {
   constructor(private title: Title) {}
 
   canActivate(
-    next: ActivatedRouteSnapshot,
-    state: RouterStateSnapshot
+    next: ActivatedRouteSnapshot
   ): Observable<boolean> | Promise<boolean> | boolean {
-    const suffix = ngUtilsConfig.guards?.title?.suffix as string;
-    const divider = ngUtilsConfig.guards?.title?.divider as string;
+    const suffix = configuration.guards.title.suffix;
+    const divider = configuration.guards.title.divider;
 
     this.title.setTitle(
       !!next.data.title ? `${next.data.title} ${divider} ${suffix}` : suffix

@@ -1,9 +1,7 @@
 import { Pipe, PipeTransform } from '@angular/core';
 import { DomSanitizer } from '@angular/platform-browser';
 
-@Pipe({
-  name: 'sanitizerUrl',
-})
+@Pipe({ name: 'sanitizerUrl' })
 export class SanitizerUrlPipe implements PipeTransform {
   constructor(private domSanitizer: DomSanitizer) {}
   transform(url: string) {

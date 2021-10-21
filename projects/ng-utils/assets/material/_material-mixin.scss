@@ -209,14 +209,14 @@ button {
     align-items: center;
     display: flex !important;
     justify-content: space-between;
-    & > .left {
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-    }
-    & > .left > .icon-back {
-      margin-right: 5px;
-    }
+  }
+  .dialog-header > .left {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+  .dialog-header > .left > .icon-back {
+    margin-right: 5px;
   }
 
   .mat-dialog-content {
@@ -232,13 +232,12 @@ button {
         width: 100%;
         height: 56px;
         padding: 0 16px;
-
-        & > .left > .title {
-          font-size: 16px;
-        }
-        & + mat-dialog-content {
-          margin-top: calc(64px - 20px);
-        }
+      }
+      .dialog-header > .left > .title {
+        font-size: 16px;
+      }
+      .dialog-header + mat-dialog-content {
+        margin-top: calc(64px - 20px);
       }
       .mat-dialog-container {
         max-height: 100%;
