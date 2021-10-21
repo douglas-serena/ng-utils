@@ -93,6 +93,7 @@ export class InputControl
       }
     } else {
       this.onChange(value);
+      super.writeValue(value);
     }
     this.changeDetectorRef.detectChanges();
   }
