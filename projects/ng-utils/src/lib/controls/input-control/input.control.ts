@@ -76,9 +76,7 @@ export class InputControl
     const element = this.elementRef?.nativeElement;
 
     let value = element?.value?.toString();
-    if (this.mask) {
-      this.writeValue(value, false);
-    }
+    this.writeValue(value, false);
   }
 
   public writeValue(value?: any, update = true): void {
@@ -88,13 +86,13 @@ export class InputControl
       value = myMask.unmask(value);
 
       this.onChange(value);
-      if (update) {
-        super.writeValue(myMask.mask(value));
-      }
     } else {
       this.onChange(value);
+    }
+    if (update) {
       super.writeValue(value);
     }
+
     this.changeDetectorRef.detectChanges();
   }
 }

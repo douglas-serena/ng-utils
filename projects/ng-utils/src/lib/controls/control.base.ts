@@ -64,6 +64,7 @@ export class ControlBase<HTMLRef = HTMLElement>
   // TWO-WAY BINDING
   @Output() public valueChange = new EventEmitter<any>();
   @Input() public set value(value: any) {
+    this.onChange(value);
     this.writeValue(value);
     this.changeDetectorRef.detectChanges();
   }

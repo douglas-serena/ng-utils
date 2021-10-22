@@ -1,4 +1,9 @@
-import { ChangeDetectorRef, SkipSelf } from '@angular/core';
+import {
+  ChangeDetectorRef,
+  EventEmitter,
+  Output,
+  SkipSelf,
+} from '@angular/core';
 import { Component, Input, OnInit, Optional } from '@angular/core';
 import { ControlContainer } from '@angular/forms';
 import { getNode } from '@douglas-serena/utils';
@@ -9,6 +14,8 @@ export class SelectControl
   extends ControlBase<HTMLSelectElement>
   implements OnInit
 {
+  @Output() public change = new EventEmitter();
+
   public options: any[] = [];
   @Input('options') set inputOptions(options: any[]) {
     this.createOptions(options);
