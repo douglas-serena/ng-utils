@@ -2,26 +2,30 @@ import { Direction } from '@angular/cdk/bidi';
 import { ScrollStrategy } from '@angular/cdk/overlay';
 import { ComponentFactoryResolver, ViewContainerRef } from '@angular/core';
 
-export interface DialogPosition {
+export type AutoFocusTarget = 'dialog' | 'first-tabbable' | 'first-heading';
+
+export interface ModalPosition {
   top?: string;
   bottom?: string;
   left?: string;
   right?: string;
 }
 
-export class ConfigDialog<D = any> {
+export class ConfigModal<D = any> {
   viewContainerRef?: ViewContainerRef;
   id?: string;
-  //  role?: DialogRole = 'dialog';
-  //  disableClose?: boolean = false;
-  width?: string = '';
-  height?: string = '';
-  //  ariaDescribedBy?: string | null = null;
-  //  ariaLabelledBy?: string | null = null;
-  //  ariaLabel?: string | null = null;
-  //  autoFocus?: AutoFocusTarget | string | boolean = 'first-tabbable';
-  //  restoreFocus?: boolean = true;
-  position?: DialogPosition;
+  fullscreen?: boolean = false;
+  focusTrap?: boolean = true;
+  role?: 'dialog' | 'alertdialog' = 'dialog';
+  disableClose?: boolean = false;
+  width?: string;
+  height?: string;
+  ariaDescribedBy?: string | null = null;
+  ariaLabelledBy?: string | null = null;
+  ariaLabel?: string | null = null;
+  autoFocus?: AutoFocusTarget | string | boolean = 'first-tabbable';
+  restoreFocus?: boolean = true;
+  position?: ModalPosition;
   componentFactoryResolver?: ComponentFactoryResolver;
   backdropClass?: string | string[] = '';
   panelClass?: string | string[] = '';
@@ -29,7 +33,7 @@ export class ConfigDialog<D = any> {
   minWidth?: number | string;
   minHeight?: number | string;
   maxWidth?: number | string = '80vw';
-  maxHeight?: number | string;
+  maxHeight?: number | string = '80vh';
   data?: D | null = null;
   direction?: Direction;
   scrollStrategy?: ScrollStrategy;

@@ -1,0 +1,57 @@
+.ng-modal-container {
+  display: flex;
+  flex-direction: column;
+
+  overflow: auto;
+  border-radius: 4px;
+  background-color: #fff;
+  box-shadow: 0 11px 15px -7px rgb(0 0 0 / 20%),
+    0 24px 38px 3px rgb(0 0 0 / 14%), 0 9px 46px 8px rgb(0 0 0 / 12%);
+
+  width: 100%;
+
+  min-height: inherit;
+  max-height: inherit;
+
+  & > * {
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+  }
+}
+
+.ng-modal-header {
+  display: block;
+  margin: 0 0 20px;
+
+  &.-padding {
+    padding: 24px 24px 0;
+  }
+}
+
+.ng-modal-content {
+  display: block;
+  overflow: auto;
+  flex: 1;
+
+  &.-padding {
+    padding: 0 24px;
+  }
+}
+
+.ng-modal-actions {
+  display: flex;
+  flex-wrap: wrap;
+  min-height: 52px;
+  padding: 8px 0;
+
+  &[align="end"] {
+    justify-content: flex-end;
+  }
+  &[align="center"] {
+    justify-content: center;
+  }
+  &.-padding {
+    padding: 8px 24px;
+  }
+}

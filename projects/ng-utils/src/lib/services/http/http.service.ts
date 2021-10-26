@@ -1,6 +1,5 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
-
 import { Observable } from 'rxjs';
 import { configuration } from '../../configuration/public-api';
 import {

@@ -72,7 +72,7 @@ export class InputControl
     }
   }
 
-  @HostListener('input') public onInput() {
+  @HostListener('input', ['$event']) public onInput(event?: KeyboardEvent) {
     const element = this.elementRef?.nativeElement;
 
     let value = element?.value?.toString();

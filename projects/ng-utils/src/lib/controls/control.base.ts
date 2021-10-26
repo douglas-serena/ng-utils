@@ -22,6 +22,7 @@ import {
   ValidatorFn,
 } from '@angular/forms';
 import { FormControl } from '@angular/forms';
+import { Utils } from '@douglas-serena/decorators';
 import { $extends, Debounce, INPUT_TYPE } from '@douglas-serena/utils';
 import { Subscription } from 'rxjs';
 import { configuration } from '../configuration/public-api';
@@ -30,6 +31,7 @@ import { TError } from './@types/types/error.type';
 import { controlRequired } from './utils/control-required';
 import { UUID } from './utils/uuid';
 
+@Utils('ngOnDestroy')
 @Component({ template: '' })
 export class ControlBase<HTMLRef = HTMLElement>
   implements OnInit, ControlValueAccessor, OnDestroy, AfterViewInit
@@ -64,9 +66,11 @@ export class ControlBase<HTMLRef = HTMLElement>
   // TWO-WAY BINDING
   @Output() public valueChange = new EventEmitter<any>();
   @Input() public set value(value: any) {
-    this.onChange(value);
-    this.writeValue(value);
-    this.changeDetectorRef.detectChanges();
+    if (!this._selfChange) {
+      this.onChange(value);
+      this.writeValue(value);
+      this.changeDetectorRef.detectChanges();
+    }
   }
 
   // COMMON
@@ -78,12 +82,24 @@ export class ControlBase<HTMLRef = HTMLElement>
 
   @Input() public errors?: TError;
 
+  private _selfChange = false;
+  private _debounceChange = new Debounce(1);
   protected __RECYCLE__: Subscription[] = [];
+  get element() {
+    return this.elementRef?.nativeElement;
+  }
 
   constructor(
     @Optional() protected controlContainer: ControlContainer,
     @SkipSelf() protected changeDetectorRef: ChangeDetectorRef
   ) {}
+
+  public selfChange() {
+    this._selfChange = true;
+    this._debounceChange.run(() => {
+      this._selfChange = false;
+    });
+  }
 
   public ngOnInit() {
     if (this.required === undefined) {
@@ -125,7 +141,9 @@ export class ControlBase<HTMLRef = HTMLElement>
 
   public onTouched = () => this.control.markAsTouched();
   public onChange = (_: any) => {
+    this.selfChange();
     this.valueChange.emit(_);
+    this.changeDetectorRef.detectChanges();
   };
 
   public writeValue(value: any): void {
